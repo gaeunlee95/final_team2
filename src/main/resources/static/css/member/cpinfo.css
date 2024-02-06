@@ -1,9 +1,29 @@
 @charset "UTF-8";
-ul li{list-style: none;}
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url(Pretendard-Medium.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url(Pretendard-Regular.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url(Pretendard-SemiBold.woff)format('woff');
+}
+
+*{
+	font-family: 'Pretendard-Medium';
+	text-decoration: none;
+	list-style: none;
+}
+
 ul{padding: 0;}
+
 #joinform02 #joinform02_box{
 	width: 590px;
-	height: 1010px;
+	height: 940px;
 	border-radius: 5px;
 	border: 1px solid #E0E0E0;
 	margin: 200px auto 150px auto;
@@ -25,9 +45,11 @@ ul{padding: 0;}
 	float: left; 
 	padding-left: 20px;
 }
-#caddress_input{
-	
+#caddress_input .caddress{
+	margin: 10px 0 0 140px;
+	width: 230px;
 }
+
 #joinform02 input{
 	padding: 10px 10px;
 	width: 210px;

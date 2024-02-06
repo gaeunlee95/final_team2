@@ -2,6 +2,8 @@ package com.khit.recruit.dto;
 
 import java.sql.Timestamp;
 
+import com.khit.recruit.entity.Role;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -21,4 +23,5 @@ public class CompanyDTO {
 	private String postalcode;
 	private Timestamp mcreatedDate; 
 	private String email;
+	private Role role;
 }

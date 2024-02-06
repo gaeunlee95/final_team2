@@ -1,5 +1,20 @@
 @charset "UTF-8";
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url(Pretendard-Medium.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url(Pretendard-Regular.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url(Pretendard-SemiBold.woff)format('woff');
+}
+
 *{
+	font-family: 'Pretendard-Medium';
 	text-decoration: none;
 }
 
@@ -88,7 +103,7 @@
 	color: white;
 }
 
-span{
+.straight{
 	display: inline-block;
 	border: 1px solid #E7E7E7;
 	width: 120px;
@@ -106,6 +121,14 @@ span{
 	margin: 10px 35px;
 }
 
+#easy img{
+	margin-right: 30px;
+}
+
+#easy .plz{
+	margin-right: 30px;
+}
+
 #easy .btn1{
 	width: 280px;
 	height: 38px;
@@ -113,6 +136,9 @@ span{
 	text-shadow: none;
 	background: #FFEB00;
 	color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #easy .btn2{
@@ -121,6 +147,9 @@ span{
 	margin: 19px 0;
 	text-shadow: none;
 	background: #03C75A;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #easy .btn3{
@@ -130,4 +159,7 @@ span{
 	background: #F2F2F2;
 	text-shadow: none;
 	color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

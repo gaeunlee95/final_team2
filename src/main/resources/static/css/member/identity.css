@@ -1,4 +1,22 @@
 @charset "UTF-8";
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url(Pretendard-Medium.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url(Pretendard-Regular.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url(Pretendard-SemiBold.woff)format('woff');
+}
+
+*{
+	font-family: 'Pretendard-Medium';
+}
+
 #container{
 	width: 1300px;
 	height: 510px;

@@ -2,6 +2,8 @@ package com.khit.recruit.entity;
 
 import java.sql.Timestamp;
 
+import com.khit.recruit.dto.CompanyDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -65,4 +67,17 @@ public class CompanyEntity {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
+	
+	public static CompanyEntity toSaveEntity(CompanyDTO companyDTO) {
+		CompanyEntity company = CompanyEntity.builder()
+				.companyId(companyDTO.getCompanyId())
+				.cpasswd(companyDTO.getCpasswd())
+				.cname(companyDTO.getCname())
+				.ownername(companyDTO.getOwnername())
+				.ownerphone(companyDTO.getOwnerphone())
+				.role(companyDTO.getRole())
+				.build();
+		
+		return company;
+	}
 }

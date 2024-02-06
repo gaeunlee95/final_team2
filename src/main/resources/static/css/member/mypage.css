@@ -1,8 +1,23 @@
 @charset "UTF-8";
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url(Pretendard-Medium.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url(Pretendard-Regular.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url(Pretendard-SemiBold.woff)format('woff');
+}
+
 *{margin: 0 auto;
 	text-decoration: none;
 	list-style: none;
 	border-radius: 5px;
+	font-family: 'Pretendard-Medium';
 }
 
 h2{

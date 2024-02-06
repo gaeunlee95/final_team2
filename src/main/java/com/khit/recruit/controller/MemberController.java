@@ -1,13 +1,14 @@
 package com.khit.recruit.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.khit.recruit.dto.CompanyDTO;
 import com.khit.recruit.dto.MemberDTO;
 import com.khit.recruit.service.MemberService;
 
@@ -16,15 +17,13 @@ import com.khit.recruit.service.MemberService;
 @Controller
 public class MemberController {
 	
-	@Autowired private JavaMailSender mailSender;
-	
 	@Autowired
 	private MemberService memberService;
 
 	
-	@GetMapping("/join")
+	@GetMapping("/identity")
 	public String certified() {
-		return "/member/join";
+		return "/member/identity";
 	}
 	
 	@GetMapping("/terms")
@@ -33,19 +32,25 @@ public class MemberController {
 	}
 	
 	@GetMapping("/mjoin")
-	public String joinForm(MemberDTO memberDTO) {
-		return "/member/info";
+	public String mjoinForm(MemberDTO memberDTO) {
+		return "/member/mjoin";
 	}
 	
 	@PostMapping("/mjoin")
-	public String mjoin() {
-		
+	public String mjoin(MemberDTO memberDTO) {
+		memberService.msave(memberDTO);
 		return "redirect:/member/login";
 	}
 	
 	@GetMapping("/cpjoin")
 	public String confirm() {
 		return "/member/cpinfo";
+	}
+	
+	@PostMapping("/cpjoin")
+	public String cpjoinForm(CompanyDTO companyDTO) {
+		memberService.cpsave(companyDTO);
+		return "redirect:/member/login";
 	}
 	
 	@GetMapping("/login")
@@ -71,6 +76,13 @@ public class MemberController {
 	@GetMapping("/jopapp")
 	public String jopapp() {
 		return "/member/jopapp";
+	}
+	
+	//이메일 중복 검사
+	@PostMapping("/member/check-email")
+	public @ResponseBody String checkEmail(@RequestParam("memberId") String memberId) {
+		String resultText = memberService.memberIdCheck(memberId);
+		return resultText;
 	}
 	
 	@ResponseBody

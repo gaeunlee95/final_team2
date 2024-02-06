@@ -18,32 +18,28 @@
 	   		</li>
     		<li>
     			<label for="cname">병원/기업명</label>
-    			<input type="text" id="brNum" name="brNum">
+    			<input type="text" id="cname" name="cname">
 	   		</li>
     		<li>
     			<label for="ownername">대표자 성함</label>
-    			<input type="text" id="brNum" name="brNum">
+    			<input type="text" id="ownername" name="ownername">
 	   		</li>
     		<li>
-    			<label for="ownername">병원 대표전화</label>
-    			<input type="text" id="brNum" name="brNum">
-	   		</li>
-    		<li>
-    			<label for="ownername">대표자 성함</label>
-    			<input type="text" id="brNum" name="brNum">
+    			<label for="tel">병원 대표전화</label>
+    			<input type="text" id="tel" name="tel">
 	   		</li>
     		<li>
     			<label for="caddress">기업/병원 주소</label>
     			<input type="text" id="postalcode" name="postalcode">
     			<button>우편번호 검색</button>
     			<div id="caddress_input">
-	    			<input type="text" id="caddress1" name="caddress">
-	    			<input type="text" id="caddress2" name="caddress">
+	    			<input type="text" class="caddress" name="caddress">
+	    			<input type="text" class="caddress" name="caddress">
     			</div>
 	   		</li>
     		<li>
-    			<label for="name">아이디</label>
-    			<input type="text" id="id" name="id"
+    			<label for="companyId">아이디</label>
+    			<input type="text" id="companyId" 
    							placeholder="영문, 숫자만 사용해 주세요">
    				<button id="btn_checkId">중복확인</button>
 					<div class ="message" id="message_id1">
@@ -57,8 +53,8 @@
 					</div>
 	   		</li>
 	   		<li>
-	   			<label for="passwd">비밀번호</label>
-	   			<input type="password" id="pw" name="pw" 
+	   			<label for="cpasswd">비밀번호</label>
+	   			<input type="password" id="cpasswd"
 	   							placeholder="8~15자 영문 + 숫자, 특수문자">
 	   			<div class ="message" id="message_pw1">
 	   				<p>8~15자 영문 + 숫자, 특수문자</p>
@@ -66,15 +62,9 @@
 	   		</li>
 	   		<li>
 	   			<label for="passwd2">비밀번호 확인</label>
-	   			<input type="password" id="pw2" name="pw2" placeholder="비밀번호를 다시 입력해주세요">
+	   			<input type="password" id="cpasswd2" placeholder="비밀번호를 다시 입력해주세요">
 	   			<div class ="message" id="message_pw2">
 	   				<p>비밀번호가 일치하지 않습니다</p>
-	   			</div>
-	   		</li>
-	   		<li>
-	   			<label for="ownername">담당자 이름</label>
-	   			<input type="text" id="ownername" name="ownername">
-	   			<div class ="message" id="message_pw2">
 	   			</div>
 	   		</li>
 	   		<li>

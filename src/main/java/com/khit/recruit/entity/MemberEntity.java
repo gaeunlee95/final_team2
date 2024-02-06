@@ -2,6 +2,8 @@ package com.khit.recruit.entity;
 
 import java.sql.Timestamp;
 
+import com.khit.recruit.dto.MemberDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -32,7 +34,7 @@ public class MemberEntity {
 	@Column(unique = true, length = 30)
 	private String memberId;
 	
-	@Column(nullable = false, length = 16)
+	@Column(nullable = false, length = 100)
 	private String mpasswd;
 	
 	@Column(nullable = false, length = 30)
@@ -41,7 +43,7 @@ public class MemberEntity {
 	@Column(nullable = false)
 	private String gender;
 	
-	@Column(nullable = false)
+	@Column
 	private Integer birth;
 	
 	@Column(nullable = false, length = 30)
@@ -55,5 +57,20 @@ public class MemberEntity {
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
+	
+	public static MemberEntity toSaveEntity(MemberDTO memberDTO) {
+		MemberEntity member = MemberEntity.builder()
+				.memberId(memberDTO.getMemberId())
+				.mpasswd(memberDTO.getMpasswd())
+				.mname(memberDTO.getMname())
+				.gender(memberDTO.getGender())
+				.birth(memberDTO.getBirth())
+				.phone(memberDTO.getPhone())
+				.email(memberDTO.getEmail())
+				.role(memberDTO.getRole())
+				.build();
+		
+		return member;
+	}
 	
 }
