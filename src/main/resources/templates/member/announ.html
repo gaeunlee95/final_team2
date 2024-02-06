@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>공고/스크랩 관리</title>
+<link rel="stylesheet" th:href="@{/css/member/announ.css}">
+</head>
+<body>
+<h2>마이 페이지</h2>
+<div id="announ">
+	<div id="category">
+		<div><p>스크랩한 채용공고</p><div id="circle"></div></div>
+		<div><p>최근 본 공고</p></div>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th class="announNum">NO</th>
+				<th class="announHos">병원명</th>
+				<th class="announJobpost">채용 공고</th>
+				<th class="announEnd">마감일</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="announNum">1</td>
+				<td class="announHos">
+					<p>무야호척추</p>
+				</td>
+				<td class="announJobpost">
+					<p>야호</p>
+				</td>
+				<td class="announEnd">
+					<p>2024.02.06</p>
+				</td>
+			</tr>
+			<tr>
+				<td class="announNum">2</td>
+				<td class="announHos">
+					<p>무야호척추</p>
+				</td>
+				<td class="announ">
+					<p>야호</p>
+				</td>
+				<td class="announEnd">
+					<p>2024.02.06</p>
+				</td>
+			</tr>
+		</tbody>		
+	</table>
+</div>
+</body>
+</html>
