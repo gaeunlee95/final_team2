@@ -7,13 +7,12 @@
 </head>
 <body>
 <section id="loginform">
-	<form id="loginform_box" action="/member/login" method="post">
+	<form id="loginform_box" th:action="@{/member/login}" method="post">
 		<h2>로그인</h2>
 		<div id="loginbox">
-			<input type="text" id="memberId" name="memberId"
-					placeholder="아이디">
-			<input type="password" id="mpwasswd" name="mpwasswd"
-					placeholder="비밀번호">
+			<!-- username, password는 시큐리티에서 제공되는 것이기에 바꾸면 안됨 -->
+			<input type="text" id="username" name="username" placeholder="아이디">
+			<input type="password" id="password" name="password" placeholder="비밀번호">
 		</div>
 		<div id="loginform_checkbox">
 			<input type="checkbox"/>
@@ -24,7 +23,7 @@
 	    	<button type="submit" onclick="">로그인</button>
 		</div>
 		<div id="loginform_bottom">
-			<a href="/joinform01.do">회원가입</a>
+			<a href="/member/identity">회원가입</a>
 			<a href="">아이디 · 비밀번호 찾기</a>
 		</div>
 		<div class="or">
@@ -32,13 +31,13 @@
 		</div>
 		<div id="easy">
 			<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=06011c7f9e9f29601482ed90e0773c5a&redirect_uri=http://localhost:8080/auth/kakao/callback">
-				<button class="btn1"><img src="/images/카카오로고.png"><span class="plz">카카오 로그인</span></button>
+				<button class="btn1"><img src="/images/kakaologo.png"><span class="plz">카카오 로그인</span></button>
 			</a>
 			<a>
-				<button class="btn2"><img src="/images/네이버로고.png"><span class="plz">네이버 로그인</span></button>
+				<button class="btn2"><img src="/images/naverlogo.png"><span class="plz">네이버 로그인</span></button>
 			</a>
 			<a>
-				<button class="btn3"><img src="/images/구글로고2.png"><span class="plz">구글 로그인</span></button>
+				<button class="btn3"><img src="/images/googlelogo.png"><span class="plz">구글 로그인</span></button>
 			</a>
 		</div>
 	</form>

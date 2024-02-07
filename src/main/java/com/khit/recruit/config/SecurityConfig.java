@@ -26,7 +26,7 @@ public class SecurityConfig {
 		http.userDetailsService(customService);
 		
 		http.authorizeHttpRequests(authorize -> authorize
-				.requestMatchers("/", "/css/**", "/images/**", "/js/**").permitAll()
+				.requestMatchers("/", "/css/**", "/images/**", "/js/**", "/mail/**").permitAll()
 				.requestMatchers("/board/write").authenticated()
 				.requestMatchers("/member/list").hasAnyAuthority("ADMIN")
 				.requestMatchers("/member/**", "/board/**").permitAll()

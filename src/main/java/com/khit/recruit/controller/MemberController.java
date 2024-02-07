@@ -23,17 +23,17 @@ public class MemberController {
 	
 	@GetMapping("/identity")
 	public String certified() {
-		return "/member/identity";
+		return "member/identity";
 	}
 	
 	@GetMapping("/terms")
 	public String terms() {
-		return "/member/terms";
+		return "member/terms";
 	}
 	
 	@GetMapping("/mjoin")
 	public String mjoinForm(MemberDTO memberDTO) {
-		return "/member/mjoin";
+		return "member/mjoin";
 	}
 	
 	@PostMapping("/mjoin")
@@ -44,7 +44,7 @@ public class MemberController {
 	
 	@GetMapping("/cpjoin")
 	public String confirm() {
-		return "/member/cpinfo";
+		return "member/cpjoin";
 	}
 	
 	@PostMapping("/cpjoin")
@@ -55,27 +55,27 @@ public class MemberController {
 	
 	@GetMapping("/login")
 	public String login() {
-		return "/member/login";
+		return "member/login";
 	}
 	
 	@GetMapping("/mypage")
 	public String myPage() {
-		return "/member/mypage";
+		return "member/mypage";
 	}
 	
 	@GetMapping("/resume")
 	public String resume() {
-		return "/member/resume";
+		return "member/resume";
 	}
 	
 	@GetMapping("/announ")
 	public String announ() {
-		return "/member/announ";
+		return "member/announ";
 	}
 	
 	@GetMapping("/jopapp")
 	public String jopapp() {
-		return "/member/jopapp";
+		return "member/jopapp";
 	}
 	
 	//이메일 중복 검사

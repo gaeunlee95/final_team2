@@ -14,7 +14,7 @@ public class SecurityUser extends User{
 	
 	public SecurityUser(MemberEntity member) {
 		//암호화 안된 상태는 {noop}을 사용함
-		super(member.getMemberId(), member.getMpasswd(), 
+		super(member.getMemberId(), member.getMpasswd(), //entity 요소들을 가져옴
 				AuthorityUtils.createAuthorityList(member.getRole().toString()));
 		this.member = member;
 	}
@@ -22,4 +22,5 @@ public class SecurityUser extends User{
 	public MemberEntity getMember() {
 		return member;
 	}
+	
 }

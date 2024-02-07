@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.khit.recruit.dto.CompanyDTO;
 import com.khit.recruit.dto.MemberDTO;
+import com.khit.recruit.entity.CompanyEntity;
 import com.khit.recruit.entity.MemberEntity;
 import com.khit.recruit.entity.Role;
+import com.khit.recruit.repository.CompanyRepository;
 import com.khit.recruit.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class MemberService {
 
 	private final MemberRepository memberRepository;
+	private final CompanyRepository companyRepository;
 	
 	private final PasswordEncoder pwEncoder;
 	
@@ -44,8 +47,13 @@ public class MemberService {
 	}
 	
 	public void cpsave(CompanyDTO companyDTO) {
-		// TODO Auto-generated method stub
+		String encPw = pwEncoder.encode(companyDTO.getCpasswd());
+		companyDTO.setCpasswd(encPw);
+		companyDTO.setRole(Role.COMPANY);
 		
+		//dto를 entity로 변환 메서드
+		CompanyEntity company = CompanyEntity.toSaveEntity(companyDTO);
+		
+		companyRepository.save(company);
 	}
-
 }
