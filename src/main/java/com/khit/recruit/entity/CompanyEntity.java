@@ -25,7 +25,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @Entity
-public class CompanyEntity {
+public class CompanyEntity extends BaseEntity{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ public class CompanyEntity {
 	@Column(unique = true, length = 30)
 	private String companyId;
 	
-	@Column(nullable = false, length = 16)
+	@Column(nullable = false, length = 100)
 	private String cpasswd;
 	
 	@Column(nullable = false, length = 30)
@@ -52,14 +52,11 @@ public class CompanyEntity {
 	@Column(length = 30)
 	private String tel;
 	
-	@Column(nullable = false)
+	@Column
 	private String caddress;
 	
-	@Column(nullable = false, length = 30)
+	@Column(length = 30)
 	private String postalcode;
-	
-	@Column
-	private Timestamp mcreatedDate; 
 	
 	@Column
 	private String email;

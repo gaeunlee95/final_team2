@@ -17,6 +17,9 @@ public class SecurityConfig {
 	@Autowired
 	private CustomUserDetailsService customService;
 	
+	@Autowired
+	private CustomCompanyUserDetailsService customCompanyService;
+	
 	//@Bean는 프로젝트에서 관리가 안되는 클래스를 빈으로 사용할때 필요함
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
@@ -24,6 +27,7 @@ public class SecurityConfig {
 		//로그인이 필요없는 페이지들 - "/", "/css/**", "/images/**", "/auth/main", "/member/**"
 		//그외 페이지들은 로그인 필요
 		http.userDetailsService(customService);
+		http.userDetailsService(customCompanyService);
 		
 		http.authorizeHttpRequests(authorize -> authorize
 				.requestMatchers("/", "/css/**", "/images/**", "/js/**", "/mail/**").permitAll()

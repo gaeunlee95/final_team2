@@ -25,7 +25,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @Entity
-public class MemberEntity {
+public class MemberEntity extends BaseEntity{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,9 +48,6 @@ public class MemberEntity {
 	
 	@Column(nullable = false, length = 30)
 	private String phone;
-	
-	@Column
-	private Timestamp mcreatedDate; 
 	
 	@Column
 	private String email;
