@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<meta charset="UTF-8">
+<title>글쓰기...</title>
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<script src="https://kit.fontawesome.com/630c352365.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" th:href="@{/css/board.css}">
+</head>
+<body>
+	<div th:replace="~{header::header-fragment}"></div>
+
+    <div id="container">
+      <section class="board-write">
+        <h2>글쓰기</h2>
+        <form th:action="@{/board/write}" method="post">
+        	<div class="write-category">
+	            <h2>1. 작성할 게시판을 선택해주세요.</h2>
+	            <select id="category">
+	                <option value="공지사항">공지사항</option>
+	                <option value="QNA">QNA</option>
+	                <option value="자유게시판">자유게시판</option>
+	                <option value="리뷰">리뷰</option>
+	            </select>
+	        </div>
+	        <div class="write-title">
+	            <h2>2. 게시글 제목을 입력해주세요. (최대 40자)</h2>
+	            <input type="text" id="title-input">
+	        </div>
+	        <div class="write-content">
+	            <h2>3. 게시글 내용을 입력해주세요. (최대 300자)</h2>
+	            <input type="text" id="content-input">
+	        </div>
+	        <div>
+	            <a th:href="@{/board/list}"><button id="w1">취소</button></a>
+	            <a th:href="@{/board/list}"><button id="w2">게시글 등록하기</button></a>
+	        </div>
+        </form>
+      </section>
+	</div>
+	
+	<div th:replace="~{footer::footer-fragment}"></div>
+</body>
+</html>

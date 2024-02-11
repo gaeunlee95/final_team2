@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url(Pretendard-Medium.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url(Pretendard-Regular.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url(Pretendard-SemiBold.woff)format('woff');
+}
+
+*{
+	font-family: 'Pretendard-Medium';
+	text-decoration: none;
+	list-style: none;
+}
+
+h2{
+	margin: 100px 400px 50px;
+	padding-left: 50px;
+}
+
+#jopapp{
+	width: 1200px;
+	height: 900px;
+	margin: 0 auto;
+}
+
+#jopapp #category{
+	width: 90%;
+    margin: 0 auto;
+    padding: 15px 0 20px 0;
+    border-bottom: 1.5px black solid;
+    display: flex;
+    font-size: 20px;
+}
+#jopapp #category > div{
+	display: flex;
+   height: 30px;
+}
+#jopapp #category p{
+	margin-left: 15px;
+  font-family: 'Pretendard-SemiBold';
+  font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+}
+#jopapp #category #circle{
+	width: 7px;
+	height: 7px;
+    background: #FF0000;
+    border-radius: 100%;
+}
+
+#jopapp table{
+	width: 90%;
+	margin: 0 auto;
+}
+
+#jopapp tr{
+	border-bottom: 1px solid #ccc;
+}
+
+#jopapp tr, th, td{
+	width: 100%;
+	padding: 5px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#jopapp td p{
+	text-decoration: underline;
+}
+
+#jopapp .jopappOpen button{
+	font-size: 14px;
+	font-family: "Inter";
+	font-weight: 600;
+	color: #FF5500;
+	width: 60px;
+	height: 30px;
+  background: #fff;
+  border-radius: 10px;
+	border: 2px solid #FF5500;
+}
+
+#jopapp .jopappYet button{
+	font-size: 14px;
+	font-family: "Inter";
+	font-weight: 600;
+	color: #737373;
+	width: 60px;
+	height: 30px;
+  background: #fff;
+  border-radius: 10px;
+	border: 2px solid #CECECE;
+}
+
+#jopapp .cancel button{
+	font-size: 14px;
+	font-family: "Inter";
+	color: #fff;
+	width: 65px;
+	height: 30px;
+  background: #FF5500;
+  border-radius: 10px;
+	border: none;
+}

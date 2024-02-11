@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>이력서 관리</title>
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<script src="https://kit.fontawesome.com/630c352365.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" th:href="@{/css/member/resume.css}">
+</head>
+<body>
+	<div th:replace="~{header::header-fragment}"></div>
+
+	<h2>마이 페이지</h2>
+	<div id="resume">
+		<div id="category">
+			<div><p>기본 이력서</p><div id="circle"></div></div>
+			<div><p>추가 이력서</p>	</div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th class="resumeNum">NO</th>
+					<th class="resumeTitle">이력서 제목</th>
+					<th class="resumeUpdate">수정</th>
+					<th class="resumeCopy">복사</th>
+					<th class="resumeSet">설정</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="resumeNum">1</td>
+					<td class="resumeTitle">무야호</td>
+					<td class="resumeUpdate">
+						<button>수정</button>				
+					</td>
+					<td class="resumeCopy">
+						<button>복사</button>	
+					</td>
+					<td class="resumeSet">
+						<button>공개/비공개</button>	
+					</td>
+				</tr>
+				<tr>
+					<td class="resumeNum">2</td>
+					<td class="resumeTitle">무야호</td>
+					<td class="resumeUpdate">
+						<button>수정</button>				
+					</td>
+					<td class="resumeCopy">
+						<button>복사</button>	
+					</td>
+					<td class="resumeSet">
+						<button>공개/비공개</button>	
+					</td>
+				</tr>
+			</tbody>		
+		</table>
+	</div>
+	
+	<div th:replace="~{footer::footer-fragment}"></div>
+</body>
+</html>

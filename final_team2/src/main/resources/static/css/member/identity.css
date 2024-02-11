@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url(Pretendard-Medium.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url(Pretendard-Regular.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url(Pretendard-SemiBold.woff)format('woff');
+}
+
+*{
+	font-family: 'Pretendard-Medium';
+}
+
+#container{
+	width: 1300px;
+	height: 510px;
+	text-align: center;
+	margin-top: 70px;
+	margin: 50px auto;
+}
+
+#classification{
+	display: flex;
+	justify-content: space-around;
+}
+
+#container h2{
+	font-family: 'Inter';
+	font-weight: 600;
+	font-size: 40px;
+	line-height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.main_join1{
+	width: 610px;
+	height: 380px;
+	border-radius: 5px;
+	background: #ccc;
+}
+.main_join1 p {
+	font-family: 'Inter';
+	color: #fff;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	font-weight: 400;
+	font-size: 34px;
+	line-height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.emailsfc{
+	font-size: 20px;
+	font-family: "Inter";
+	font-weight: 600;
+	color: #fff;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	width: 370px;
+	height: 60px;
+    background: linear-gradient(to right, #4E66FF, #1A8DFF);
+    border-radius: 10px;
+    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+	border: none;
+	margin: 23px 0;
+}
+
+.phonesfc{
+	font-size: 20px;
+	font-family: "Inter";
+	font-weight: 600;
+	color: #fff;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	width: 370px;
+	height: 60px;
+    background: linear-gradient(to right, #4E66FF, #1A8DFF);
+    border-radius: 10px;
+    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+	border: none;
+	margin: 23px 0;
+}
+.main_join2{
+	width: 610px;
+	height: 380px;
+	border-radius: 5px;
+	background: #ccc;
+}
+
+.main_join2 p {
+	font-family: 'Inter';
+	color: #fff;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	font-weight: 400;
+	font-size: 34px;
+	line-height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.company_join{
+	font-size: 24px;
+	font-family: "Inter";
+	font-weight: 600;
+	color: #fff;
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	width: 340px;
+	height: 75px;
+    background: #FF5500;
+    border-radius: 20px;
+    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+	border: none;
+	margin-top: 55px;
+}
+

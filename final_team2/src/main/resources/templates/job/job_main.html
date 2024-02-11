@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>공고 메인페이지</title>
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<script src="https://kit.fontawesome.com/630c352365.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://kit.fontawesome.com/630c352365.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	 <!-- footer.html 연결  -->
+	<div th:replace="~{header::header-fragment}"></div>
+	
+	<div id="container">
+	   <section id="job_main">
+	   		
+			<p class="title">채용 정보</p>
+			
+			<!-- 상단 지역선택 부분 -->
+			<div id="body01">
+				<div id="body01_01">
+					<!-- 지도 -->
+					<div id="map">
+						<img th:src="@{/images/job_main/map.png}" alt="map">
+					</div>
+				</div>
+				<div id="body01_02">
+					<!-- 검색 -->
+					<div id="search">
+						<select id="category-select">
+							<option value="option1">제목</option>
+						    <option value="option2">병원</option>
+						</select>
+						<input type="text" id="search-input" placeholder="검색어 입력" />
+					    <button class="search-button">검색</button>
+					</div>
+					<!-- 지역 선택 -->
+					<div id="city">
+						<div>
+							<div class="city_selected">전체</div><div>서울</div><div>부산</div><div>대구</div><div>인천</div><div>광주</div>
+						</div>
+						<div>
+							<div>대전</div><div>울산</div><div>세종</div><div>경기도</div><div>강원도</div><div>충청북도</div>
+						</div>
+						<div>
+							<div>충청남도</div><div>전라북도</div><div>전라북도</div><div>경상북도</div><div>경상남도</div><div>제주도</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 공고글 리스트 부분 -->
+			<div id="body02">
+				<!-- 정렬 -->
+				<div id="sort">
+					<p>등록일순</p>|<p>마감일순</p>|<p>최신업데이트순</p>
+				</div>
+			
+				<!-- 공고글 -->
+				<div id="job_list">
+					<div>
+						<p>연세 고든병원</p>
+					</div>				
+					<div>
+						 <p><a th:href="@{/job/job_detail}">물리치료사 선생님 모십니다.</a><p>
+						<div>
+							<div>경력무관</div>&nbsp;<div>고등학교</div>&nbsp;<div>정규직</div>&nbsp;<div>서울 > 송파구</div>
+						</div>
+						<p>물리치료사  : 회사 내규에 따름</p>
+					</div>				
+					<div><img th:src="@{/images/job_main/star_selected.svg}" alt="star"></div>				
+					<div>
+						<button class="small_btn">즉시 지원</button>
+						<p>2023-11-06 등록</p>
+						<p>채용시까지</p>
+					</div>				
+				</div>
+				
+				<div id="job_list">
+					<div>
+						<p>연세 고든병원</p>
+					</div>				
+					<div>
+						<p><a th:href="@{/job/job_detail}">물리치료사 선생님 모십니다.</a><p>
+						<div>
+							<div>경력무관</div>&nbsp;<div>고등학교</div>&nbsp;<div>정규직</div>&nbsp;<div>서울 > 송파구</div>
+						</div>
+						<p>물리치료사  : 회사 내규에 따름</p>
+					</div>				
+					<div><img th:src="@{/images/job_main/star.svg}" alt="star"></div>					
+					<div>
+						<button class="small_btn">즉시 지원</button>
+						<p>2023-11-06 등록</p>
+						<p>채용시까지</p>
+					</div>				
+				</div>
+				
+				<div id="job_list">
+					<div>
+						<p>연세 고든병원</p>
+					</div>				
+					<div>
+						<p><a th:href="@{/job/job_detail}">물리치료사 선생님 모십니다.</a><p>
+						<div>
+							<div>경력무관</div>&nbsp;<div>고등학교</div>&nbsp;<div>정규직</div>&nbsp;<div>서울 > 송파구</div>
+						</div>
+						<p>물리치료사  : 회사 내규에 따름</p>
+					</div>				
+					<div><img th:src="@{/images/job_main/star.svg}" alt="star"></div>					
+					<div>
+						<button class="small_btn">즉시 지원</button>
+						<p>2023-11-06 등록</p>
+						<p>채용시까지</p>
+					</div>				
+				</div>
+				
+				<!-- 페이지 -->
+				<div id="page">
+					<!-- 페이지 영역 -->
+					<div id="pagination">
+						  <!-- 이전 페이지 -->
+						  <!-- 2page 클릭하면 db 페이지는 1page -->
+						  <!-- <a th:href="${boardList.first}? '#' : 
+						  		@{/board/pagelist(page=${boardList.number})}"> -->
+						  		<a href="#"><img th:src="@{/images/page_prev.svg}" alt="map"></a>
+						
+					<!-- 페이지 번호 블럭 -->
+					<!--  <span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+					  <span th:text="${page}"></span>
+					  /pagelist?page=1
+					  <a th:href="@{/board/pagelist(page=${page})}" th:text="${page}"></a>
+					 </span> -->
+					 <a href="#" class="curr ent_page">1</a>
+					 <a href="#">2</a>
+					 <a href="#">3</a>
+					 <a href="#">4</a>
+					 <a href="#">5</a>
+					 <a href="#">6</a>
+					 
+					 <!-- 다음 페이지 -->
+					 <!-- 현재 2page -> 3page  실제페이지는 1page -->
+						<!--   <a th:href="${boardList.last}? '#' : 
+						  		@{/board/pagelist(page=${boardList.number+2})}"> -->
+						  <a href="#"><img th:src="@{/images/page_next.svg}" alt="map"></a>
+					</div>
+					<!-- 글쓰기 버튼 -->
+					<div class="btn_wrtie">
+						<!-- <a th:href="@{/board/write}"> -->
+						<a th:href="@{/job/job_write}"><button type="button" class="small_btn">글쓰기</button></a>
+					</div>
+				</div>
+			</div>
+	  </section>
+	</div>
+	
+	<!-- footer.html 연결  -->
+	<div th:replace="~{footer::footer-fragment}"></div>
+
+</body>
+</html>

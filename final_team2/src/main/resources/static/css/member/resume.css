@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url(Pretendard-Medium.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url(Pretendard-Regular.woff)format('woff');
+}
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url(Pretendard-SemiBold.woff)format('woff');
+}
+
+*{
+	font-family: 'Pretendard-Medium';
+	text-decoration: none;
+	list-style: none;
+}
+
+h2{
+	margin: 100px 400px 50px;
+	padding-left: 50px;
+}
+
+#resume{
+	width: 1200px;
+	height: 900px;
+	margin: 0 auto;
+}
+
+#resume #category{
+	width: 90%;
+    margin: 0 auto;
+    padding: 15px 0 20px 0;
+    border-bottom: 1.5px black solid;
+    display: flex;
+    font-size: 20px;
+}
+#resume #category > div{
+	display: flex;
+   height: 30px;
+}
+#resume #category p{
+	margin-left: 15px;
+  font-family: 'Pretendard-SemiBold';
+  font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+}
+#resume #category #circle{
+	width: 7px;
+	height: 7px;
+    background: #FF0000;
+    border-radius: 100%;
+}
+
+#resume table{
+	width: 90%;
+	margin: 0 auto;
+}
+
+#resume tr{
+	border-bottom: 1px solid #ccc;
+}
+
+#resume tr, th, td{
+	width: 100%;
+	padding: 5px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#resume .resumeUpdate button{
+	font-size: 14px;
+	font-family: "Inter";
+	color: #fff;
+	width: 65px;
+	height: 30px;
+  background: #FF5500;
+  border-radius: 10px;
+	border: none;
+}
+
+#resume .resumeCopy button{
+	font-size: 14px;
+	font-family: "Inter";
+	color: #fff;
+	width: 65px;
+	height: 30px;
+  background: #FF5500;
+  border-radius: 10px;
+	border: none;
+}

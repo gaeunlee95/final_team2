@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>공고 상세페이지</title>
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<script src="https://kit.fontawesome.com/630c352365.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=sqpbvyc558"></script>
+</head>
+<body>
+	 <!-- footer.html 연결  -->
+	<div th:replace="~{header::header-fragment}"></div>
+	
+	<div id="container">
+	   <section id="job_detail">
+	   		
+	   		<p class="title">채용 정보</p>
+	   		
+	   		<!-- 병원 및 글제목 -->
+	   		<div id="job_detail_title">
+		   		<p>연세고든병원 물리치료과</p>
+		   		<p>[송파구] 물리치료사 선생님 충원 합니다 ! (주5일제 예정)</p>
+	   		</div>
+	   		
+	   		<!-- 상단 정보 -->
+	   		<div id="information">
+	   			<div>
+	   				<div>
+		   				<span class="job_title">직종</span>
+		   				<div><span class="job_title2">물리치료사</span>연봉 3,000 ~ 3,200 만원 (면접 후 결정)</div>
+	   				</div>
+	   				<div>
+		   				<span class="job_title">경력</span>
+		   				경력 1년
+	   				</div>
+	   				<div>
+		   				<span class="job_title">학력</span>
+		   				고등학교
+	   				</div>
+	   				<div>
+		   				<span class="job_title">우대조건</span>
+		   				IM|IV능력우수자
+	   				</div>
+	   				<div>
+		   				<span class="job_title">면허/자격증</span>
+		   				물리치료사자격
+	   				</div>
+	   				<div>
+		   				<span class="job_title">모집인원</span>
+		   				1명
+	   				</div>
+	   			</div>
+	   			
+	   			<div>
+	   				<div>
+		   				<span class="job_title">고용형태</span>
+		   				정규직
+	   				</div>
+	   				<div>
+		   				<span class="job_title">직급/직책</span>
+		   				일반직원
+	   				</div>
+	   				<div>
+		   				<span class="job_title">근무지역</span>
+		   				경기 의정부
+	   				</div>
+	   				<div>
+		   				<span class="job_title">근무시간</span>
+		   				<div>
+			   				인원충원후 주5일제근무 예정입니다
+			   				<div id="worktime">
+			   					<div>
+					   				<span class="worktime2">평일</span>
+					   				09시 00분 ~ 18시 00분
+				   				</div>
+			   					<div>
+					   				<span class="worktime2">토요일</span>
+					   				08시 00분 ~ 13시 00분
+				   				</div>
+			   					<div>
+					   				<span class="worktime2">기타</span>
+					   				인원충원후 주5일제근무 예정입니다
+				   				</div>
+			   				</div>
+		   				</div>
+	   				</div>
+	   			</div>
+	   		</div>
+	   		<div id="information2">
+	   			<div>
+	   				<span class="job_title">담당업무</span>
+		   			진료, 접수, 및IV(채혈)
+   				</div>
+   			</div>
+   			
+   			<!-- 위치 정보 -->
+   			<div id="location">
+   				<div id="map_box">
+		   			<div id="map" style=" height:400px;">
+		   				<!-- 지도 표시 -->
+		   			</div>
+		   			<div id="map_button">
+		   				<img th:src="@{/images/job_detail/trafficSign.svg}" alt="direction">&nbsp;
+		   				<button type="button">길 찾기</button>
+	   				</div>
+	   			</div>
+	   			<div id="address">
+	   				<div>
+	   					<div>병원 주소</div> <p>경기 의정부시 천보로 44 5,6층</p>
+	   				</div>
+	   				<div>
+	   					<div>오시는 길</div> <p>8호선 가락시장역 3번출구</p>
+	   				</div>
+	   			</div>
+   			</div>
+   			
+   			<!-- 지원 버튼 -->
+			<div id="apply_btns">
+				<button class="search-button">즉시 지원</button>
+				<button class="search-button">이메일 지원</button>
+			</div>
+			
+			<!-- 카테고리 -->
+			<div id="category_main">
+				<div><p>상세요강</p><div id="circle"></div></div>
+				<div><p>접수기간/방법</p></div>
+				<div><p>병원정보</p></div>
+			</div>
+			
+			<!-- 상세요강 -->
+			<div id="description">
+			</div>
+			
+			<!-- 복리후생 -->
+			<div id="category">
+				<div><p>복리후생</p></div>
+			</div>
+			<div id="benefit">
+				<div id="benefit_box">
+					<div>
+						<img th:src="@{/images/job_detail/PensionAndInsurance.svg}" alt="direction">
+						<p>연금/보험</p>
+					</div>
+					<p>4대보험, 퇴직연금</p>
+				</div>
+				<div id="benefit_box">
+					<div>
+						<img th:src="@{/images/job_detail/PensionAndInsurance.svg}" alt="direction">
+						<p>연금/보험</p>
+					</div>
+					<p>4대보험, 퇴직연금</p>
+				</div>
+				<div id="benefit_box">
+					<div>
+						<img th:src="@{/images/job_detail/PensionAndInsurance.svg}" alt="direction">
+						<p>연금/보험</p>
+					</div>
+					<p>4대보험, 퇴직연금</p>
+				</div>
+				<div id="benefit_box">
+					<div>
+						<img th:src="@{/images/job_detail/PensionAndInsurance.svg}" alt="direction">
+						<p>연금/보험</p>
+					</div>
+					<p>4대보험, 퇴직연금</p>
+				</div>
+			
+			
+			</div>
+			
+			<!-- 접수기간/방법 -->
+			<div id="category">
+				<div><p>접수기간/방법</p></div>
+			</div>
+			<div id="date">
+				<div>
+					<div>
+						<div id="remaining_time">
+							<div >
+								<p>남은 기간</p>
+								<p>남은 기간</p>
+							</div>
+							<div>
+			   					<div>시작일</div> <p>2024.01.17 (수)</p>
+			   				</div>
+			   				<div>
+			   					<div>마감일</div> <p>2024.02.29 (목)</p>
+			   				</div>
+						</div>
+						<div id="apply_method">
+							<div>
+				   				<span class="job_title">지원방법</span>
+				   				<p>피지컬매치 온라인 접수,직접 방문접수</p>
+			   				</div>
+							<div>
+				   				<span class="job_title">제출서류</span>
+				   				<p>이력서</p>
+			   				</div>
+							<div>
+				   				<span class="job_title">지원서 양식</span>
+				   				<p>피지컬매치 이력서,지원자 자유이력서</p>
+			   				</div>
+							<div>
+				   				<span class="job_title">지원방법</span>
+			   				</div>
+						</div>
+					</div>
+				</div>
+				<div id="pic">
+					<div>
+						<div>
+			   				<span class="job_title">인사담당자</span>
+			   				<p>김대준</p>
+		   				</div>
+						<div>
+			   				<span class="job_title">부서명</span>
+			   				<p></p>
+		   				</div>
+	   				</div>
+	   				<div>
+						<div>
+			   				<span class="job_title">전화번호</span>
+			   				<p>02-406-5588</p>
+		   				</div>
+						<div>
+			   				<span class="job_title">휴대폰번호</span>
+			   				<p>비공개</p>
+		   				</div>
+	   				</div>
+				
+				</div>
+			</div>
+			
+			<!-- 병원정보 -->
+			<div id="category">
+				<div><p>병원정보</p></div>
+			</div>
+			<div id="company_information">
+				<div>
+					<p>메디스콥 영상의학과</p>
+				</div>
+				<div>
+					<div>
+						<div id="information01">
+							<div>
+				   				<span class="job_title">기관분류</span>
+				   				<p>개인의원</p>
+			   				</div>
+							<div>
+				   				<span class="job_title">대표전화</span>
+				   				<p>02-406-5588</p>
+			   				</div>
+							<div>
+				   				<span class="job_title">팩스번호</span>
+				   				<p>02-406-5592</p>
+			   				</div>
+							<div>
+				   				<span class="job_title">홈페이지</span>
+				   				<p>http://www.mediscope.co.kr/</p>
+			   				</div>
+						</div>
+						<div id="information02">
+							<div>
+				   				<span class="job_title">직원 수</span>
+				   				<p>-</p>
+			   				</div>
+							<div>
+				   				<span class="job_title">설립일</span>
+				   				<p>-</p>
+			   				</div>
+			   				<div>
+				   				<span class="job_title">진료과목</span>
+				   				<p>-</p>
+			   				</div>
+						</div>
+					</div>
+				</div>
+				<div id="c_introduction">
+						<div>
+			   				<span class="job_title">병원소개</span>
+			   				<p>
+			   					서울시 송파구 가락동에 위치한 메디스콥 영상의학과입니다.
+								ge 3.0t signa pioneer mri와 ge 16ch ct를 보유하고 있습니다.
+								많은 관심 부탁 드립니다.
+							</p>
+		   				</div>
+				</div>
+			</div>
+			
+			<!-- 경고문구 -->
+			<div id="warning">
+				<div>
+					<p>본 정보는 <span class="warning_blue">피지컬매치</span>에서 제공한 자료를 바탕으로 피지컬매치이 편집 및 그 표현방법을 수정하여 완성한 것입니다.</p>
+					<p>본 정보는 피지컬매치의 동의없이 무단전재 또는 재배포, 재가공할 수 없으며, 게재된 채용병원(기업)과 채용담당자의 정보는 구직활동 이외의 용도로 사용될 수 없습니다.</p>
+					<p>피지컬매치은 <span class="warning_blue">피지컬매치</span>에서 게재한 자료에 대한 오류와 사용자가 이를 신뢰하여 취한 조치에 대해 책임을 지지 않습니다.</p>
+					<p>[저작권 ⓒ피지컬매치 무단전재 – 재배포 금지]</p>
+				</div>
+			</div>
+			
+			<!-- 지원 버튼 -->
+			<div id="apply_btns">
+				<button class="search-button">즉시 지원</button>
+				<button class="search-button">이메일 지원</button>
+			</div>
+				   			
+	  </section>
+	</div>
+	
+	<!-- footer.html 연결  -->
+	<div th:replace="~{footer::footer-fragment}"></div>
+	
+	
+	<script>
+    /* jquery 환경 - 버튼 클릭 이벤트 */
+	$(function(){
+		//네이버 지도 표시
+		var HOME_PATH = window.HOME_PATH || '.';
+
+	    var cityhall = new naver.maps.LatLng(37.5252328, 126.8927846),
+	      map = new naver.maps.Map('map', {
+	          center: cityhall.destinationPoint(0, 500),
+	          zoom: 15
+	      }),
+	      marker = new naver.maps.Marker({
+	          map: map,
+	          position: cityhall
+	      });
+	
+	    var contentString = [
+	          '<div class="iw_inner">',
+	          '   <h3>영등포 세무서</h3>',
+	          '   <p>서울특별시 영등포구 선유동1로 38 | <br />',
+	          '      영등포 세무서<br />',
+	          '       <img src="'+ HOME_PATH +'/img/example/hi-seoul.jpg" width="55" height="55" alt="영등포 세무서" class="thumb" /><br />',
+	          '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+	          '   </p>',
+	          '</div>'
+	      ].join('');
+	
+	    var infowindow = new naver.maps.InfoWindow({
+	      content: contentString
+	    });
+	
+	    naver.maps.Event.addListener(marker, "click", function(e) {
+	      if (infowindow.getMap()) {
+	          infowindow.close();
+	      } else {
+	          infowindow.open(map, marker);
+	      }
+	    });
+	
+	    infowindow.open(map, marker);
+		
+	});
+</script>
+
+</body>
+</html>
