@@ -45,10 +45,6 @@ ul{padding: 0;}
 	float: left; 
 	padding-left: 20px;
 }
-#caddress_input .caddress{
-	margin: 10px 0 0 140px;
-	width: 230px;
-}
 
 #joinform02 input{
 	padding: 10px 10px;
@@ -58,6 +54,26 @@ ul{padding: 0;}
 	border-radius: 3px;
 	border: 1px solid rgb(196, 196, 196);
 }
+
+#caddress #sample4_postcode{
+	width: 150px;
+}
+
+#caddress #post_btn{
+	width: 90px;
+	height: 38px;
+}
+
+#caddress #sample4_roadAddress{
+	margin: 10px 0 0 140px;
+	width: 240px;
+}
+
+#caddress #sample4_detailAddress{
+	margin: 10px 0 0 140px;
+	width: 240px;
+}
+
 #btn_checkId{
 	font-size: 10px;
 	font-family: "Inter";

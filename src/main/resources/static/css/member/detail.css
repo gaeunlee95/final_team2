@@ -20,27 +20,22 @@
 
 ul{padding: 0;}
 
-#joinform02 #joinform02_box{
+#detail #detail_box{
 	width: 590px;
-	height: 750px;
+	height: 730px;
 	border-radius: 5px;
 	border: 1px solid #E0E0E0;
 	margin: 200px auto 150px auto;
 }
-#joinform02 #joinform02_box h2{
+#detail #detail_box h2{
 	font-size: 24px;
 	text-align: center;
 	padding: 35px 0;
 }
-#joinform02 #joinform02_box li p{
-	display: block;
-	padding: 5px;
-}
-
-#joinform02  ul li{
+#detail  ul li{
 	margin: 20px 20px 20px 50px;
 }
-#joinform02 label{
+#detail label{
 	width: 120px;
 	font-size: 14px;
 	line-height: 37px;
@@ -49,7 +44,7 @@ ul{padding: 0;}
 	float: left; 
 	padding-left: 20px;
 }
-#joinform02 input{
+#detail input{
 	padding: 10px 10px;
 	width: 210px;
 	height: 16px;
@@ -70,36 +65,19 @@ ul{padding: 0;}
     /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
 	border: none;
 }
-
-#valid{
-	display: flex;
-	height: 30px;
-	align-items: center;
-	padding-left: 20px;
-}
-
-#valid p{
-	margin: 0 0;
-}
-
-#check-result{
-	padding-left: 20px;
-	margin-top: 10px;
-}
-
-#joinform02 li .message{
+#detail li .message{
     margin-left: 140px;
     display: none;
 }
-#joinform02 li .message p{
+#detail li .message p{
 	color: #F84A71;
 	font-size: 12px;
 }
-#joinform02 #email, #domain-txt{
+#detail #email, #domain-txt{
 	width: 75px !important;
 	font-size: 12px;
 }
-#joinform02 #domain-list{
+#detail #domain-list{
 	width: 109px;
 	height: 37.5px;
 	font-size: 12px;
@@ -108,11 +86,11 @@ ul{padding: 0;}
 	border-radius: 3px;
 	border: 1px solid rgb(196, 196, 196);
 }
-#joinform02 span{
+#detail span{
 	font-size: 14px;
 	padding:  0 0 0 5px;
 }
-#joinform02 #birth-year, #birth-month, #birth-day, #phone_num{
+#detail #birth-year, #birth-month, #birth-day, #phone_num{
 	width: 90px;
 	height: 37px;
 	font-size: 12px;
@@ -121,17 +99,17 @@ ul{padding: 0;}
 	border-radius: 3px;
 	border: 1px solid rgb(196, 196, 196);
 }
-#joinform02 .gender {
+#detail .gender {
 	width: 20px;
 	line-height: 37px;
 	float: left;
 }
-#joinform02 #gender-option{
+#detail #gender-option{
 	height: 37px;
 	display: flex;
 	align-items: center;
 }
-#joinform02 p{
+#detail p{
 	float: left;
 	font-size:14px;
 	padding: 0 5px;
@@ -150,10 +128,10 @@ ul{padding: 0;}
 	margin: 50px auto 35px;
 	border: none;
 }
-#joinform02 button:hover {
+#detail button:hover {
     cursor: pointer;
 }
-#joinform02 input[type="radio"] {
+#detail input[type="radio"] {
 	accent-color: #4E66FF;	
 	color: white;
 }

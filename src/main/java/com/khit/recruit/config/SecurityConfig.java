@@ -30,16 +30,17 @@ public class SecurityConfig {
 		http.userDetailsService(customCompanyService);
 		
 		http.authorizeHttpRequests(authorize -> authorize
-				.requestMatchers("/", "/css/**", "/images/**", "/js/**", "/mail/**").permitAll()
+				.requestMatchers("/", "/css/**", "/images/**", "/js/**", "/mail/**", "/error").permitAll()
 				.requestMatchers("/board/write").authenticated()
 				.requestMatchers("/member/list").hasAnyAuthority("ADMIN")
 				.requestMatchers("/member/**", "/board/**").permitAll()
 				.anyRequest().authenticated()
 				)
+				.csrf().disable()
 				.formLogin(form -> form.loginPage("/member/login")
-				.defaultSuccessUrl("/", true).permitAll()
+				.defaultSuccessUrl("/").permitAll()
 				);
-		
+						
 		//접근 권한 페이지
 		http.exceptionHandling().accessDeniedPage("/auth/accessDenied");
 		
