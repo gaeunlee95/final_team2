@@ -1,5 +1,16 @@
 package com.khit.recruit.handler;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+import org.springframework.web.socket.CloseStatus;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+import lombok.extern.log4j.Log4j2;
+
 @Component
 @Log4j2
 public class ChatHandler extends TextWebSocketHandler {

@@ -15,12 +15,10 @@
             </div>
             <div>
                 <div id="msgArea" class="col"></div>
-                <div class="col-6">
+                <div class="col-12">
                     <div class="input-group mb-3">
+                    	<input type="hidden" id="username" name="username" th:value="${name}">
                         <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -30,7 +28,8 @@
 <script th:inline="javascript">
     $(document).ready(function(){
 
-        const username = "userName";
+        /* const username = document.getElementById("userName").value; */ //시큐리티 연결 후
+        const username = "username"; //임시로 사용중
 
         $("#disconn").on("click", (e) => {
             disconnect();
@@ -39,8 +38,20 @@
         $("#button-send").on("click", (e) => {
             send();
         });
+        
+        const websocket = new WebSocket("ws://192.168.20.7:8080/ws/chat"); //임시사용
+        
+        function onEnterKey(event) {
+            if (event.keyCode === 13) {
+                send();
+            }
+        }
 
-        const websocket = new WebSocket("ws://localhost:8080/ws/chat");
+        // 키 입력 이벤트 리스너 등록
+        document.getElementById("msg").addEventListener("keyup", onEnterKey);
+        
+        
+        /* const websocket = new WebSocket("ws://localhost:8080/ws/chat"); */ //시큐리티 연결 후
 
         websocket.onmessage = onMessage;
         websocket.onopen = onOpen;
@@ -90,19 +101,21 @@
 
             //로그인 한 클라이언트와 타 클라이언트를 분류하기 위함
             if(sessionId == cur_session){
-                var str = "<div class='col-6'>";
-                str += "<div class='alert alert-secondary'>";
+                var str = "<div class='col-12'>";
+                str += "<div class='alert alert-secondary' style='width:40%; float:right; clear:both;' >";
                 str += "<b>" + sessionId + " : " + message + "</b>";
                 str += "</div></div>";
                 $("#msgArea").append(str);
             }
             else{
-                var str = "<div class='col-6'>";
-                str += "<div class='alert alert-warning'>";
+                var str = "<div class='col-12'>";
+                str += "<div class='alert alert-warning' style='width:40%; clear:both;'>";
                 str += "<b>" + sessionId + " : " + message + "</b>";
                 str += "</div></div>";
                 $("#msgArea").append(str);
             }
+          	//채팅이 내려가면 다시 끌어올려줌
+            window.scrollTo(0, document.body.scrollHeight);
         }
     })
 </script>
