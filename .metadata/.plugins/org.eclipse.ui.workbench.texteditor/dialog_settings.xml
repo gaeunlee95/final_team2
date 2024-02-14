@@ -6,7 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="curr ent_page"/>
+			<item value="pagination"/>
+			<item value="profilebox button"/>
 			<item value="&lt;!DOCTYPE html&gt;"/>
 		</list>
 		<list key="replacehistory">
