@@ -18,6 +18,7 @@ public class ChatController {
 			 @AuthenticationPrincipal SecurityUser principal*/){ 
 		 /*String name = principal.getMember().getMname();*/
 		 /*model.addAttribute("name", name); */
-		 return "chat"; }
+		 return "chat";
+	}
 	 
 }
