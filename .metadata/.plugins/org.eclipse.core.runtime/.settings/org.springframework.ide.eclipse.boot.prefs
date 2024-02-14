@@ -7,6 +7,7 @@ org.springframework.ide.eclipse.boot.wizard.PopularityTracker.security=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.thymeleaf=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.validation=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.web=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.websocket=1
 org.springframework.ide.eclipse.boot.wizard.PreferredSelections.artifactId=final_team2
 org.springframework.ide.eclipse.boot.wizard.PreferredSelections.bootVersion=3.2.2
 org.springframework.ide.eclipse.boot.wizard.PreferredSelections.description=Demo project for Spring Boot
