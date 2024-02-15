@@ -11,52 +11,78 @@
 </head>
 <body>
 	<div th:replace="~{header::header-fragment}"></div>
+	
+	<div id="container">
 
-	<h2>마이 페이지</h2>
-	<div id="resume">
-		<div id="category">
-			<div><p>기본 이력서</p><div id="circle"></div></div>
-			<div><p>추가 이력서</p>	</div>
+		<div id="resume">
+			<h2>마이 페이지</h2>
+		
+			<div id="category">
+				<div><p>기본 이력서</p><div id="circle"></div></div>
+				<div><p>추가 이력서</p><div></div></div>
+			</div>
+			
+			<!-- board list area -->
+        <div id="board-list">
+            <div class="board">
+                <table class="board-table">
+                    <thead>
+                        <tr>
+                            <th class="th-num">NO</th>
+                            <th class="th-title">이력서 제목</th>
+                            <th class="th-id">수정</th>
+                            <th class="th-date">복사</th>
+                            <th class="th-hit">설정</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="job : ${jobList}">
+                            <td class="resumeNum" th:text="${job.jid}"></td>
+							<td class="resumeTitle"><a th:href="@{|/job/${job.jid}|(page=${jobList.number+1})}" th:text="${job.title}"></a></td>
+							<td class="resumeUpdate">
+								<button>수정</button>				
+							</td>
+							<td class="resumeCopy">
+								<button>복사</button>	
+							</td>
+							<td class="resumeSet">
+								<div>
+				           			<div id="personal_login" class="login_identity_selected">열람</div>
+				           			<div id="hospital_login" class="login_identity_nonselected">비열람</div>
+				           		</div>
+							</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+			
+			<!-- 페이지 -->
+			<div id="page">
+				<!-- 페이지 영역 -->
+				<div id="pagination">
+					<!-- 이전 페이지 -->
+				<!-- 2page 클릭하면 db 페이지는 1page -->
+				<a th:href="${jobList.first}? '#' : 
+					@{/job/job_main(page=${jobList.number})}"><img th:src="@{/images/job/page_prev.svg}" alt="prev"></a>
+				<!-- 페이지 번호 블럭 -->
+				<span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+				 <!-- 현재 페이지는 링크없이 숫자만 표시 -->
+				    <span th:if="${page == jobList.number + 1}"  
+				    	th:text="${page}" class="current_page"></span>
+				    <span th:if="${page != jobList.number + 1}">
+				    	<a th:href="@{/job/job_main(page=${page})}" th:text="${page}"></a>
+				    </span>
+				</span>
+				<!-- 다음 페이지 -->
+				<!-- 현재 2page -> 3page  실제페이지는 1page-->
+						<a th:href="${jobList.last} ? '#' : 
+								@{/job/job_main(page=${jobList.number+2})}"><img th:src="@{/images/job/page_next.svg}" alt="map"></a>
+				</div>
+						
+			</div>
 		</div>
-		<table>
-			<thead>
-				<tr>
-					<th class="resumeNum">NO</th>
-					<th class="resumeTitle">이력서 제목</th>
-					<th class="resumeUpdate">수정</th>
-					<th class="resumeCopy">복사</th>
-					<th class="resumeSet">설정</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="resumeNum">1</td>
-					<td class="resumeTitle">무야호</td>
-					<td class="resumeUpdate">
-						<button>수정</button>				
-					</td>
-					<td class="resumeCopy">
-						<button>복사</button>	
-					</td>
-					<td class="resumeSet">
-						<button>공개/비공개</button>	
-					</td>
-				</tr>
-				<tr>
-					<td class="resumeNum">2</td>
-					<td class="resumeTitle">무야호</td>
-					<td class="resumeUpdate">
-						<button>수정</button>				
-					</td>
-					<td class="resumeCopy">
-						<button>복사</button>	
-					</td>
-					<td class="resumeSet">
-						<button>공개/비공개</button>	
-					</td>
-				</tr>
-			</tbody>		
-		</table>
+	
 	</div>
 	
 	<div th:replace="~{footer::footer-fragment}"></div>

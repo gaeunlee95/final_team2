@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.col-12 {
+
+    width: 100%;
+    border-radius: 20px;
+    background-color: #A8D4FF;
+}
+
+.form-control{
+	text-align: left;
+}
+
+.chat_title{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}

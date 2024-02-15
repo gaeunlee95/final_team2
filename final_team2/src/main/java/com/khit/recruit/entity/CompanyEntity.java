@@ -34,10 +34,10 @@ public class CompanyEntity extends BaseEntity{
 	@Column(length = 15)
 	private String brNum;
 	
-	@Column(unique = true, length = 30)
+	@Column(nullable = false, unique = true,  length = 30)
 	private String companyId;
 	
-	@Column(nullable = false, length = 16)
+	@Column(nullable = false, length = 100)
 	private String cpasswd;
 	
 	@Column(nullable = false, length = 30)
@@ -52,13 +52,13 @@ public class CompanyEntity extends BaseEntity{
 	@Column(length = 30)
 	private String tel;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String caddress;
 	
-	@Column(nullable = false, length = 30)
+	@Column(nullable = true, length = 30)
 	private String postalcode;
 	
-	@Column
+	@Column(nullable = true)
 	private String email;
 	
 	@Enumerated(EnumType.STRING)

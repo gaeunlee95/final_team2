@@ -19,10 +19,6 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Autowired
 	private MemberRepository memberRepository;
 	
-	@Autowired
-	private CompanyRepository companyRepository;
-	
-
 	@Override
 	public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
 		//db에 있는 회원 정보를 조회하고
@@ -33,18 +29,6 @@ public class CustomUserDetailsService implements UserDetailsService{
 		}else {
 			MemberEntity member = findMember.get();
 			return new SecurityUser(member);
-		}
-	}
-	
-	public UserDetails loadCompanyByUsername(String companyId) throws UsernameNotFoundException {
-		//db에 있는 회원 정보를 조회하고
-		//UserDetails 타입의 객체를 반환함
-		Optional<CompanyEntity> findCompany = companyRepository.findByCompanyId(companyId);
-		if(findCompany.isEmpty()) {
-			throw new UsernameNotFoundException(companyId + "사용자 없음");
-		}else {
-			CompanyEntity company = findCompany.get();
-			return new SecurityCompany(company);
 		}
 	}
 }

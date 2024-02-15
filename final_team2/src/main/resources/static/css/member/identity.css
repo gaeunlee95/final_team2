@@ -13,16 +13,16 @@
     src: url(Pretendard-SemiBold.woff)format('woff');
 }
 
-*{
-	font-family: 'Pretendard-Medium';
-}
+/* 공통 스타일 */
+*{margin: 0; padding: 0; font-family: 'Pretendard-Medium';}
+#container{width: 100%;}
+ul li{list-style: none;}
+a{text-decoration: none;}
 
-#container{
-	width: 1300px;
-	height: 510px;
-	text-align: center;
-	margin-top: 70px;
-	margin: 50px auto;
+#identity{
+	margin: 0 auto; 
+	width:75%;
+	padding-bottom: 150px;
 }
 
 #classification{
@@ -31,93 +31,83 @@
 }
 
 #container h2{
-	font-family: 'Inter';
-	font-weight: 600;
-	font-size: 40px;
-	line-height: 48px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	margin: 8% 0 8% 0;
+    font-size: 35px;
+    text-align: center;
 }
 
 .main_join1{
-	width: 610px;
-	height: 380px;
-	border-radius: 5px;
-	background: #ccc;
-}
+	width: 40%;
+    height: 300px;
+    border-radius: 5px;
+    background-image: url('/images/member/join_img.svg');
+    background-size: cover; 
+    background-position: center; 
+    border: 1.5px #c4c4c4 solid;
+    text-align: center;
+ }
+ 
 .main_join1 p {
-	font-family: 'Inter';
-	color: #fff;
-	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	font-weight: 400;
-	font-size: 34px;
-	line-height: 48px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    color: #fff;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-family: 'Pretendard-SemiBold';
 }
 
 .emailsfc{
 	font-size: 20px;
-	font-family: "Inter";
-	font-weight: 600;
-	color: #fff;
-	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	width: 370px;
-	height: 60px;
-    background: linear-gradient(to right, #4E66FF, #1A8DFF);
-    border-radius: 10px;
-    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
-	border: none;
-	margin: 23px 0;
+    color: #fff;
+    width: 75%;
+    height: 50px;
+    background: #1A8DFF;
+    border: 1.5px #2196F3 solid;
+    border-radius: 5px;
+    border: none;
+    margin-top: 75px;
 }
 
 .phonesfc{
 	font-size: 20px;
-	font-family: "Inter";
-	font-weight: 600;
-	color: #fff;
-	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	width: 370px;
-	height: 60px;
-    background: linear-gradient(to right, #4E66FF, #1A8DFF);
-    border-radius: 10px;
-    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
-	border: none;
-	margin: 23px 0;
+    color: #fff;
+    width: 75%;
+    height: 50px;
+    background: #1A8DFF;
+    border: 1.5px #2196F3 solid;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px
 }
 .main_join2{
-	width: 610px;
-	height: 380px;
-	border-radius: 5px;
-	background: #ccc;
+	width: 40%;
+    height: 300px;
+    border-radius: 5px;
+    background-image: url('/images/member/join_img.svg');
+    background-size: cover; 
+    background-position: center;
+    border: 1.5px #c4c4c4 solid;
+    text-align: center;
 }
 
 .main_join2 p {
-	font-family: 'Inter';
 	color: #fff;
-	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	font-weight: 400;
-	font-size: 34px;
-	line-height: 48px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    font-size: 27px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-family: 'Pretendard-SemiBold';
 }
 
 .company_join{
-	font-size: 24px;
-	font-family: "Inter";
-	font-weight: 600;
-	color: #fff;
-	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	width: 340px;
-	height: 75px;
-    background: #FF5500;
-    border-radius: 20px;
-    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
-	border: none;
-	margin-top: 55px;
+	font-size: 20px;
+    color: #fff;
+    width: 75%;
+    height: 50px;
+    background: #1A8DFF;
+    border: 1.5px #2196F3 solid;
+    border-radius: 5px;
+    border: none;
+    margin-top: 113px;
 }
 

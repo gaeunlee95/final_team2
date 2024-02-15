@@ -31,7 +31,7 @@ public class MemberEntity extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long mid;
 	
-	@Column(unique = true, length = 30)
+	@Column(nullable = false, unique = true , length = 30)
 	private String memberId;
 	
 	@Column(nullable = false, length = 100)
@@ -43,13 +43,13 @@ public class MemberEntity extends BaseEntity{
 	@Column(nullable = false)
 	private String gender;
 	
-	@Column
+	@Column(nullable = true)
 	private Integer birth;
 	
 	@Column(nullable = false, length = 30)
 	private String phone;
 	
-	@Column
+	@Column(nullable = true)
 	private String email;
 	
 	@Enumerated(EnumType.STRING)
@@ -57,6 +57,22 @@ public class MemberEntity extends BaseEntity{
 	
 	public static MemberEntity toSaveEntity(MemberDTO memberDTO) {
 		MemberEntity member = MemberEntity.builder()
+				.memberId(memberDTO.getMemberId())
+				.mpasswd(memberDTO.getMpasswd())
+				.mname(memberDTO.getMname())
+				.gender(memberDTO.getGender())
+				.birth(memberDTO.getBirth())
+				.phone(memberDTO.getPhone())
+				.email(memberDTO.getEmail())
+				.role(memberDTO.getRole())
+				.build();
+		
+		return member;
+	}
+	
+	public static MemberEntity toUpdateEntity(MemberDTO memberDTO) {
+		MemberEntity member = MemberEntity.builder()
+				.mid(memberDTO.getMid())
 				.memberId(memberDTO.getMemberId())
 				.mpasswd(memberDTO.getMpasswd())
 				.mname(memberDTO.getMname())
