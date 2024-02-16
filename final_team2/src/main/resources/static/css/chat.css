@@ -12,13 +12,32 @@ ul li{list-style: none;}
 a{text-decoration: none;}
 
 
+body {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    align-items: center;
+}
+
 .chat_box{
   background: #a8d4ff;
   border-radius: 20px;
   border-style: solid;
   border-color: #eeeeee;
   border-width: 1px;
-  height: 705px;
+  width: 800px;
+  height: 700px;
   position: relative;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
@@ -48,4 +67,26 @@ a{text-decoration: none;}
   align-items: center;
   justify-content: center;
   align-items: flex-end
+}
+
+.input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    margin: 0 30px;
+    height: 80px;
+    border-radius: 20px;
+}
+
+element.style {
+    width: 40%;
+    float: right;
+    clear: both;
+    margin: 10px 30px 15px;
+    border-radius: 20px;
+    background-image: linear-gradient(to right, #FF3D00, #FF5500);
+    position: relative;
+    border-width: 1px;
+    color: white;    
 }
