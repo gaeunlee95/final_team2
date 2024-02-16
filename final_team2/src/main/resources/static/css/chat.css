@@ -13,70 +13,67 @@ a{text-decoration: none;}
 
 
 body {
-    margin: 0;
-    font-family: var(--bs-body-font-family);
-    font-size: var(--bs-body-font-size);
-    font-weight: var(--bs-body-font-weight);
-    line-height: var(--bs-body-line-height);
-    color: var(--bs-body-color);
-    text-align: var(--bs-body-text-align);
-    background-color: var(--bs-body-bg);
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    height: 100vh;
-    align-items: center;
+    background-color: #A8D4FF;
 }
 
-.chat_box{
-  background: #a8d4ff;
-  border-radius: 20px;
-  border-style: solid;
-  border-color: #eeeeee;
-  border-width: 1px;
-  width: 800px;
-  height: 700px;
-  position: relative;
-  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+b {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    padding: 5%;
+}
+
+.chat_box {
+	max-height: 600px;
+	overflow-y: auto;
+	
+	/* 채팅창 스크롤바 숨기기 */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* 채팅창 스크롤바 숨기기 */
+.chat_box::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .col-12-1{
-  margin: 30px;
+  margin: 2%;
   background: #ffffff;
   border-radius: 20px;
   text-align: center;
   align-items: center;
-  height: 55px;
   position: relative;
   box-shadow: inset 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .col-12-1 b{
-  color: #707070;
-  text-align: center;
-  font-family: 'Pretendard-Medium';
-  font-size: 24px;
-  line-height: 22px;
-  font-weight: 600;
-  position: relative;
-  width: 766.07px;
-  height: 38.9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-items: flex-end
+	color: #707070;
+	text-align: center;
+	font-family: 'Pretendard-Medium';
+	font-size: 24px;
+	line-height: 22px;
+	font-weight: 600;
+	position: relative;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center; 
 }
 
-.input-group>.form-control, .input-group>.form-floating, .input-group>.form-select {
-    position: relative;
-    flex: 1 1 auto;
-    width: 1%;
-    min-width: 0;
-    margin: 0 30px;
-    height: 80px;
+#msg {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    font-size: 14px;
+    width: 90%;
+    height: 8%;
     border-radius: 20px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
 }
 
 element.style {
@@ -90,3 +87,4 @@ element.style {
     border-width: 1px;
     color: white;    
 }
+

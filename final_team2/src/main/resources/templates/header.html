@@ -22,8 +22,17 @@
                         <a th:href="@{/rboard/list}">리뷰</a>
                     </div>
                 </div>
-                    <a th:href="@{/chat}">문의상담</a>
+                    <a th:href="@{#}" onclick="window.open('/chat', 'popup', 'width=500,height=700'); return false;">문의상담</a>
                 </div>
+                <script>
+					function openPopup(url, width, height) {
+				    var screenWidth = window.screen.width;
+				    var screenHeight = window.screen.height;
+				    var leftPosition = screenWidth - width;
+				    var topPosition = screenHeight - height;
+				    window.open(url, 'popup', 'width=' + width + ', height=' + height + ', left=' + leftPosition + ', top=' + topPosition);
+				}
+				</script>
             </div>
 			
 			<!-- 로그인 전 -->
@@ -49,5 +58,6 @@
     </section>
      </div>
         <script th:src="@{/js/favicon.js}"></script>
+        
 </header>
 </html>
