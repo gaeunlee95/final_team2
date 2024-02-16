@@ -11,30 +11,28 @@
 
 <body>
 	<div>
-		<div class="container">
-			<div>
-				<div class="col-12">
-					<div class="col-6">
-						<label><b>채팅방</b></label>
-					</div>
-					<div id="msgArea" class="col"></div>
-					<div class="input-group mb-3">
-						<input type="hidden" id="username" name="username"
-							th:value="${name}"> <input type="text" id="msg"
-							class="form-control" aria-label="Recipient's username"
-							aria-describedby="button-addon2"
-							style=" border-radius: 10px; margin: 0 auto; padding: 20px;">
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="container">
+	        <div class="chat_box">
+	            <div class="col-12-1">
+	                <label><b>거인병원</b></label>
+	            </div>
+	            <div>
+	                <div id="msgArea" class="col"></div>
+	                <div class="col-12">
+	                	<input type="hidden" id="username" name="username" th:value="${name}">
+	                    <div class="input-group mb-3">
+	                        <input type="text" id="msg" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        </div>
 	</div>
 
 	<script th:inline="javascript">
     $(document).ready(function(){
 
-        /* const username = document.getElementById("userName").value; */ //시큐리티 연결 후
-        const username = "username"; //임시로 사용중
+        const username = document.getElementById("username").value;
 
         $("#disconn").on("click", (e) => {
             disconnect();
@@ -44,7 +42,6 @@
             send();
         });
         
-        const websocket = new WebSocket("ws://192.168.20.7:8080/ws/chat"); //임시사용
         
         function onEnterKey(event) {
             if (event.keyCode === 13) {
@@ -56,7 +53,7 @@
         document.getElementById("msg").addEventListener("keyup", onEnterKey);
         
         
-        /* const websocket = new WebSocket("ws://localhost:8080/ws/chat"); */ //시큐리티 연결 후
+        const websocket = new WebSocket("ws://localhost:8080/ws/chat");
 
         websocket.onmessage = onMessage;
         websocket.onopen = onOpen;
@@ -108,7 +105,7 @@
             if(sessionId == cur_session){
                 var str = "<div class='col-12'>";
                 str += "<div class='alert alert-secondary' \
-                style='width:40%; float:right; clear:both; \
+                style='width:40%; float:right; clear:both; margin: 30px 20px 30px; 0; \
                 border-radius: 20px; background-image: linear-gradient(to right, #FF3D00, #FF5500); color:white'>";
                 
                 str += "<b>" + sessionId + " : " + message + "</b>";

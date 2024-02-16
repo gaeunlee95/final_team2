@@ -1,18 +1,51 @@
 @charset "UTF-8";
 
-.col-12 {
+/* 공통 스타일 */
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard-Medium';
+  box-sizing: border-box;
+}
+#container{width: 100%;}
+ul li{list-style: none;}
+a{text-decoration: none;}
 
-    width: 100%;
-    border-radius: 20px;
-    background-color: #A8D4FF;
+
+.chat_box{
+  background: #a8d4ff;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #eeeeee;
+  border-width: 1px;
+  height: 705px;
+  position: relative;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.form-control{
-	text-align: left;
+.col-12-1{
+  margin: 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  text-align: center;
+  align-items: center;
+  height: 55px;
+  position: relative;
+  box-shadow: inset 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.chat_title{
-	display: flex;
-	justify-content: center;
-	text-align: center;
+.col-12-1 b{
+  color: #707070;
+  text-align: center;
+  font-family: 'Pretendard-Medium';
+  font-size: 24px;
+  line-height: 22px;
+  font-weight: 600;
+  position: relative;
+  width: 766.07px;
+  height: 38.9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-end
 }
