@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.khit.recruit.config.SecurityCompany;
+import com.khit.recruit.dto.CompanyDTO;
 import com.khit.recruit.dto.JobDTO;
 import com.khit.recruit.service.JobService;
 
@@ -30,11 +33,6 @@ public class JobController {
 	
 	private final JobService jobService;
 
-	/*@GetMapping("/job_main")
-	public String job_mainForm() {
-		return "job/job_main";
-	}*/
-	
 	@GetMapping("/job_detail")
 	public String job_detailForm() {
 		return "job/job_detail";
@@ -51,12 +49,20 @@ public class JobController {
 	public String write(JobDTO jobDTO, 
 			BindingResult bindingResult,
 			//jobFile 이 필수가 아님
-			@RequestParam(name = "jobFile", required = false) MultipartFile jobFile) throws IllegalStateException, IOException {
+			@RequestParam(name = "jobFile", required = false) MultipartFile jobFile,
+			Authentication authentication) throws IllegalStateException, IOException {
 		log.info("jobDTO : " + jobDTO);
 		if(bindingResult.hasErrors()) {  //에러가 있으면 글쓰기폼으로 이동
 			log.info("has errors.....");
 			return "main";
 		}
+		/*SecurityCompany userDetails = (SecurityCompany) authentication.getPrincipal();
+	    Long cid = userDetails.getCompany().getCid();
+	    CompanyDTO companyDTO = new CompanyDTO();
+	    companyDTO.setCid(cid); // 로그인한 유저의 cid 설정
+	    jobDTO.setCompanyDTO(companyDTO); // jobDTO에 companyDTO 설정
+		*/
+		
 		//글쓰기 처리
 		jobService.save(jobDTO, jobFile);
 		/* return "redirect:/board/pagelist"; */

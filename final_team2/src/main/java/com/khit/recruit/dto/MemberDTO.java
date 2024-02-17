@@ -21,6 +21,8 @@ public class MemberDTO {
 	private String phone;
 	private Timestamp mcreatedDate; 
 	private String email;
+	private String filename;
+	private String filepath;
 	private Role role;
 	
 	public static MemberDTO toSaveDTO(MemberEntity
@@ -36,6 +38,8 @@ public class MemberDTO {
 				.role(member.getRole())
 				.mcreatedDate(member.getCreatedDate())
 				.email(member.getEmail())
+				.filename(member.getFilename())
+				.filepath(member.getFilepath())
 				.build();
 		
 		return memberDTO;

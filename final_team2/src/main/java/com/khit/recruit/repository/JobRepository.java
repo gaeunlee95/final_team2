@@ -14,7 +14,7 @@ public interface JobRepository extends JpaRepository<Job, Long>{
 
 	Page<Job> findByTitleContaining(String keyword, Pageable pageable);
 
-	@Query("SELECT j FROM Job j JOIN j.companyEntity c WHERE c.cname LIKE %:cname%")
+	@Query("SELECT j FROM Job j JOIN j.company c WHERE c.cname LIKE %:cname%")
     Page<Job> findByCnameContaining(@Param("cname") String keyword, Pageable pageable);
 
 	Page<Job> findByAddress01Containing(String city, Pageable pageable);

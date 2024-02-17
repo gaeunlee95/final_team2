@@ -2,6 +2,7 @@ package com.khit.recruit.entity;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Optional;
 
 import com.khit.recruit.dto.JobDTO;
 
@@ -20,10 +21,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Data
+@Setter
+@Getter
 @Entity
 public class Job extends BaseEntity{
 	
@@ -139,10 +142,8 @@ public class Job extends BaseEntity{
 	
 	@ManyToOne
 	@JoinColumn
-	private CompanyEntity companyEntity;
+	private CompanyEntity company;
 	
-	
-	//dto를 entity로 변환하는 정적 메서드
 	public static Job toSaveEntity(JobDTO jobDTO) {
 		Job job = Job.builder()
 				.title(jobDTO.getTitle())
@@ -181,8 +182,9 @@ public class Job extends BaseEntity{
 				.filename(jobDTO.getFilename())
 				.filepath(jobDTO.getFilepath())
 				.jobHits(0)
+				.company(jobDTO.getCompany())
 				.build();
 		return job;
 	}
-
+	
 }

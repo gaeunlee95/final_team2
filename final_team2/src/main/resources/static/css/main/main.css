@@ -35,6 +35,7 @@ a{text-decoration: none;}
     height: 275px;
     object-fit: cover;
 }
+
 #mid #mid_top #login_box{
 	position: absolute;
     width: 270px;
@@ -267,3 +268,124 @@ a{text-decoration: none;}
 .review_caption{
   font-size: small;
 }
+
+/* 로그인후 상태창 css */
+/* 로그인후_박스 */
+.Loginafter_Box {
+	position: absolute;
+    width: 270px;
+    height: 230px;
+    background: #FFFFFF;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    top: 20px;
+    right: 20px;
+    padding: 17px;
+}
+
+/* 로그인 프로필 */
+.Loginafter_profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0 15px 0;
+
+}
+
+/* 프로필 사진 */
+.profile_img {
+    display: flex;
+    justify-content: space-between;
+}
+.profile_img img {
+    width: 80px !important; 
+    height: 80px !important;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+/* 이름 */
+.profile_name{
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.profile_name_t1 {
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+}
+.profile_name_t2 {
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    color: #919090;
+}
+
+/* 이력서 관리 */
+.Loginafter_btn {
+    display: block;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 10px;
+    background-color: #1a8dff;
+    line-height: 40px;
+}
+
+.Loginafter_btn:hover {
+    background-color: #ff5500;
+}
+
+.color_blue_txt {
+    color: #ffffff;
+}
+
+/* 마이페이지 */
+.fa-home-user:before,
+.fa-house-user:before {
+    display: flex;
+    text-align: right;
+    color: #0056b3;
+}
+
+.fa-house-user {
+    position: absolute;
+    top: 5%; 
+    right: 5%;
+    font-size: 30px;
+}
+
+/* 지원한곳 */
+.cp_LinkBox {
+    text-align: left;
+    font-size: 14px;
+    margin-top: 10px;
+    border-top: 1px solid #5d5d5d;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5px;
+}
+
+.cp_LinkBox a {
+    display: inline-block;
+    margin: 5px 5px;
+    color: #000000;
+    text-decoration: none;
+    text-align: center;
+}
+
+.cp_LinkBox a:hover {
+    text-decoration: underline;
+}
+
+.color_blue2_txt {
+    color: #0056b3;
+}
+

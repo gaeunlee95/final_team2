@@ -8,4 +8,6 @@ import com.khit.recruit.entity.MemberEntity;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long>{
 	Optional<MemberEntity> findByMemberId(String String);
+
+	Optional<MemberEntity> findByMid(Long mid);
 }

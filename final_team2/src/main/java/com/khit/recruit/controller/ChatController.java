@@ -15,20 +15,20 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class ChatController {
     
-	
-	 @GetMapping("/chat") 
-	 public String chat(
-			 Model model, 
-			 @AuthenticationPrincipal SecurityUser principal,
-			 @AuthenticationPrincipal SecurityCompany company){ 
-		 if(principal != null){
-			 String name = principal.getMember().getMname();
-			 model.addAttribute("name", name);
-		 }else {
-			 String name = company.getCompany().getCname();
-			 model.addAttribute("name", name);
-		 }
-		 return "chat"; 
-	}
-	 
+   
+    @GetMapping("/chat") 
+    public String chat(
+          Model model, 
+          @AuthenticationPrincipal SecurityUser principal,
+          @AuthenticationPrincipal SecurityCompany company){ 
+       if(principal != null){
+          String name = principal.getMember().getMname();
+          model.addAttribute("name", name);
+       }else {
+          String name = company.getCompany().getCname();
+          model.addAttribute("name", name);
+       }
+       return "chat"; 
+   }
+    
 }

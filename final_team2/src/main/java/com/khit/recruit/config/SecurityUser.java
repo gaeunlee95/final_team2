@@ -4,7 +4,6 @@ package com.khit.recruit.config;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 
-import com.khit.recruit.entity.CompanyEntity;
 import com.khit.recruit.entity.MemberEntity;
 
 public class SecurityUser extends User{

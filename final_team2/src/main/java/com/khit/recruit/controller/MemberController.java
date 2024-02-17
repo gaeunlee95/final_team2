@@ -1,11 +1,15 @@
 package com.khit.recruit.controller;
 
+import java.io.IOException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.recruit.config.SecurityUser;
 import com.khit.recruit.dto.CompanyDTO;
@@ -73,8 +78,29 @@ public class MemberController {
 	}
 	
 	@GetMapping("/mypage")
-	public String myPage() {
+	public String myPage(@AuthenticationPrincipal SecurityUser principal, Model model) {
+		MemberDTO memberDTO = memberService.findById(principal.getMember().getMid());
+		model.addAttribute("member", memberDTO);
 		return "member/mypage";
+	}
+	
+	@PostMapping("/profileUpdate")
+	public String profileUpdate(
+			@RequestParam(name = "memberFile", required = false) MultipartFile memberFile,
+			Authentication authentication) throws Exception {
+		//로그인한 유저의 mid
+		SecurityUser userDetails = (SecurityUser) authentication.getPrincipal();
+	    Long mid = userDetails.getMember().getMid();
+	    //mid를 통해 로그인한 유저의 정보 받아옴
+	    MemberDTO memberDTO = memberService.findByMid(mid);
+	    memberDTO = memberService.update(memberDTO, memberFile);
+		
+	    return "redirect:/member/mypage";
+	}
+	
+	@GetMapping("/cpmypage")
+	public String cpmyPage() {
+		return "member/cpmypage";
 	}
 	
 	/*@GetMapping("/resume")
@@ -123,8 +149,43 @@ public class MemberController {
 		return "member/announ";
 	}
 	
-	@GetMapping("/jopapp")
+	/*@GetMapping("/jopapp")
 	public String jopapp() {
+		return "member/jopapp";
+	}*/
+	
+	@GetMapping("/jopapp")
+	public String GetJobAppPageList(
+			@RequestParam(value="type", required = false) String type,
+			@RequestParam(value="keyword", required = false) String keyword,
+			@PageableDefault(page = 1) Pageable pageable,
+			Model model) {
+			
+			Page<JobDTO> jobDTOList = null;
+			//검색어가 없으면 페이지 처리를 하고, 검색어가 있으면 검색어로 페이지 처리
+			if(keyword == null) {
+				jobDTOList = jobService.findListAll(pageable);
+			}else if(type != null && type.equals("title")) {
+				jobDTOList = jobService.findByJobTitleContaining(keyword, pageable);
+			}else if(type != null && type.equals("content")){
+				jobDTOList = jobService.findByCnameContaining(keyword, pageable);
+			}
+			log.info("jobDTOList : " + jobDTOList );
+			
+			//하단의 페이지 블럭 만들기
+			int blockLimit = 10;  //하단에 보여줄 페이지 개수
+			//시작 페이지 1, 11, 21    12/10 = 1.2 -> 2.2 -> 2-1, 1*10+1 =11
+			int startPage = ((int)(Math.ceil((double)pageable.getPageNumber()/blockLimit))-1)*blockLimit+1;
+			//마지막 페이지 10, 20, 30 //12page -> 12 마지막
+			int endPage = (startPage+blockLimit-1) > jobDTOList.getTotalPages() ?
+					jobDTOList.getTotalPages() : startPage+blockLimit-1;
+			endPage = Math.max(endPage, startPage); // 마지막 페이지는 시작 페이지와 같거나 큼
+			
+			model.addAttribute("jobList", jobDTOList);
+			model.addAttribute("type", type);    //검색 유형 보내기
+			model.addAttribute("kw", keyword);   //검색어 보내기
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
 		return "member/jopapp";
 	}
 	

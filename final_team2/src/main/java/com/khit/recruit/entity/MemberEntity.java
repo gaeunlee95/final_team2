@@ -52,6 +52,12 @@ public class MemberEntity extends BaseEntity{
 	@Column(nullable = true)
 	private String email;
 	
+	@Column
+	private String filename;
+	
+	@Column
+	private String filepath;
+	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
@@ -64,13 +70,15 @@ public class MemberEntity extends BaseEntity{
 				.birth(memberDTO.getBirth())
 				.phone(memberDTO.getPhone())
 				.email(memberDTO.getEmail())
+				.filename(memberDTO.getFilename())
+				.filepath(memberDTO.getFilepath())
 				.role(memberDTO.getRole())
 				.build();
 		
 		return member;
 	}
 	
-	public static MemberEntity toUpdateEntity(MemberDTO memberDTO) {
+	public static MemberEntity toSaveUpdate(MemberDTO memberDTO) {
 		MemberEntity member = MemberEntity.builder()
 				.mid(memberDTO.getMid())
 				.memberId(memberDTO.getMemberId())
@@ -80,10 +88,13 @@ public class MemberEntity extends BaseEntity{
 				.birth(memberDTO.getBirth())
 				.phone(memberDTO.getPhone())
 				.email(memberDTO.getEmail())
+				.filename(memberDTO.getFilename())
+				.filepath(memberDTO.getFilepath())
 				.role(memberDTO.getRole())
 				.build();
 		
 		return member;
 	}
+
 	
 }

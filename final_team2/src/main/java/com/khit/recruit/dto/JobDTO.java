@@ -58,7 +58,7 @@ public class JobDTO {
 	private Integer jobHits;		//조회수
 	
 	//CompanyDTO 추가
-	private CompanyDTO companyDTO;
+	private CompanyEntity company;
 	
 	//entity -> dto로 변환할 정적 메서드
 	//db에 있는 모든 칼럼을 가져옴
@@ -103,9 +103,9 @@ public class JobDTO {
 				.createdDate(job.getCreatedDate())
 				.updatedDate(job.getUpdatedDate())
 				.jobHits(job.getJobHits())
-				//cid에 대한 comapnyDTO를 jobDTO에 저장?
-				.companyDTO(CompanyDTO.toSaveDTO(job.getCompanyEntity()))
+				.company(job.getCompany())
 				.build();
+				
 		return jobDTO;
 	}
 }

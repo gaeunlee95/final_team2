@@ -22,17 +22,8 @@
                         <a th:href="@{/rboard/list}">리뷰</a>
                     </div>
                 </div>
-                    <a th:href="@{#}" onclick="window.open('/chat', 'popup', 'width=500,height=700'); return false;">문의상담</a>
+                    <a th:href="@{/chat}">문의상담</a>
                 </div>
-                <script>
-					function openPopup(url, width, height) {
-				    var screenWidth = window.screen.width;
-				    var screenHeight = window.screen.height;
-				    var leftPosition = screenWidth - width;
-				    var topPosition = screenHeight - height;
-				    window.open(url, 'popup', 'width=' + width + ', height=' + height + ', left=' + leftPosition + ', top=' + topPosition);
-				}
-				</script>
             </div>
 			
 			<!-- 로그인 전 -->
@@ -46,19 +37,26 @@
 	             </div>
             </th:block>
             
-            <!-- 로그인 후 -->    
             <th:block sec:authorize="isAuthenticated()">
-            	<div class="login">			
-	                <i class="fa-solid fa-user"></i>
+            	<div class="login" sec:authorize="hasAuthority('MEMBER')">			
+	                <!-- <i class="fa-solid fa-user"></i> -->
 	                <div class="login_b">
-	                    <a th:href="@{/member/logout}">로그아웃</a> |
-	                    <a th:href="@{/member/mypage}">마이페이지</a>
+	                	[<span sec:authentication="principal.member.mname"></span>]님 | 
+	                    <a th:href="@{/member/logout}">로그아웃</a>
 	                </div>
 	             </div>
+	             
+	             <div class="login" sec:authorize="hasAuthority('COMPANY')">			
+	               <!--  <i class="fa-solid fa-user"></i> -->
+	                <div class="login_b">
+	                	[<span sec:authentication="principal.company.cname"></span>] 담당자님 
+	                    <a th:href="@{/member/logout}">로그아웃</a>
+	                </div>
+	             </div>
+	             
             </th:block>
     </section>
      </div>
         <script th:src="@{/js/favicon.js}"></script>
-        
 </header>
 </html>

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.springframework.security.core.annotation.AuthenticationPrincipal"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+    <fullyQualifiedTypeName name="com.khit.recruit.config.SecurityUser"/>
+    <fullyQualifiedTypeName name="com.khit.recruit.entity.CompanyEntity"/>
+    <fullyQualifiedTypeName name="org.springframework.security.core.annotation.AuthenticationPrincipal"/>
+    <fullyQualifiedTypeName name="com.khit.recruit.config.SecurityCompany"/>
+    <fullyQualifiedTypeName name="org.hibernate.grammars.hql.HqlParser.IsEmptyPredicateContext"/>
 </qualifiedTypeNameHistroy>

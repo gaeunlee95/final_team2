@@ -61,17 +61,30 @@ public class CompanyEntity extends BaseEntity{
 	@Column(nullable = true)
 	private String email;
 	
+	@Column
+	private String filename;
+	
+	@Column
+	private String filepath;
+	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
 	
 	public static CompanyEntity toSaveEntity(CompanyDTO companyDTO) {
 		CompanyEntity company = CompanyEntity.builder()
+				.brNum(companyDTO.getBrNum())
 				.companyId(companyDTO.getCompanyId())
 				.cpasswd(companyDTO.getCpasswd())
-				.cname(companyDTO.getCname())
 				.ownername(companyDTO.getOwnername())
 				.ownerphone(companyDTO.getOwnerphone())
+				.cname(companyDTO.getCname())
+				.tel(companyDTO.getTel())
+				.caddress(companyDTO.getCaddress())
+				.postalcode(companyDTO.getPostalcode())
+				.email(companyDTO.getEmail())
+				.filename(companyDTO.getFilename())
+				.filepath(companyDTO.getFilepath())
 				.role(companyDTO.getRole())
 				.build();
 		

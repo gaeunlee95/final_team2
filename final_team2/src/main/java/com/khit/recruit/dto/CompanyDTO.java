@@ -6,10 +6,14 @@ import com.khit.recruit.entity.CompanyEntity;
 import com.khit.recruit.entity.Job;
 import com.khit.recruit.entity.Role;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class CompanyDTO {
 
@@ -25,6 +29,8 @@ public class CompanyDTO {
 	private String postalcode;
 	private Timestamp createdDate; 
 	private String email;
+	private String filename;
+	private String filepath;
 	private Role role;
 	
 	//entity -> dto로 변환할 정적 메서드
@@ -36,12 +42,15 @@ public class CompanyDTO {
 				.companyId(companyEntity.getCompanyId())
 				.cpasswd(companyEntity.getCpasswd())
 				.ownername(companyEntity.getOwnername())
+				.ownerphone(companyEntity.getOwnerphone())
 				.cname(companyEntity.getCname())
 				.tel(companyEntity.getTel())
 				.caddress(companyEntity.getCaddress())
 				.postalcode(companyEntity.getPostalcode())
 				.createdDate(companyEntity.getCreatedDate())
 				.email(companyEntity.getEmail())
+				.filename(companyEntity.getFilename())
+				.filepath(companyEntity.getFilepath())
 				.role(companyEntity.getRole())
 				.build();
 		

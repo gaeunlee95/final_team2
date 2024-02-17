@@ -28,9 +28,10 @@
 	           		<a >※신규 채용 공고 업데이트 안내 / 신규 채용 공고 업데이트 안내 / 신규 채용 공고 안내※</a>
 	           		<a >※신규 채용 공고 업데이트 안내 / 신규 채용 공고 업데이트 안내 / 신규 채용 공고 안내※</a>
 	           	</div>
-	           	
+	           	<th:block sec:authorize="isAnonymous()">
 	           	<!-- 로그인 -->
 	           	<form id="login_box" th:action="@{/member/login}" method="post">
+           		<!-- 로그인 전 -->
 	           		<div id="login_box_body01">
 			           	<div>
 			           		<p><span class="mid_top_subtitle">개인회원 로그인</span></p>
@@ -53,6 +54,7 @@
 	           				<button type="submit">로그인</button>
 	           			</div>
 	           		</div>
+           		
 	           		<div id="login_box_body03">
 	           			<input type="checkbox">
 	        			<p>아이디 저장</p>
@@ -65,6 +67,27 @@
 	           			</div>
 	           		</div>
 	           	</form>
+	           	</th:block>
+	           	<!-- 로그인 후 -->
+	           		<th:block sec:authorize="isAuthenticated()">
+		           		<div class="Loginafter_Box">
+					        <div class="Loginafter_profile">
+					            <p id="pro" class="profile_img">
+					                <img th:src="@{/images/main/customerPhoto.jpg}" id="customerPhoto">
+					            </p>
+					            <div class="profile_name">
+					                <p class="profile_name_t1">허니비</p>
+					                <p class="profile_name_t2">피지컬매치에<br> 오신 것을 환영합니다&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+					            </div>
+					        </div>
+					        <a class="Loginafter_btn" href="/member/jopapp">이력서 관리</a>
+					        <a href="/member/mypage" title="마이페이지바로가기"><i class="fa-solid fa-house-user"></i></a>
+					        <div class="cp_LinkBox">
+					            <a title="지원내역" href="/member/jopapp">지원내역<span class="color_blue2_txt"><b> 17</b></span>건</a>
+					            <a title="스크랩공고" href="/member/announ">스크랩공고<span class="color_blue2_txt"><b> 17</b></span>건</a>
+					        </div>
+					    </div>
+				    </th:block>
 	       </section>
 	           	
            <section id="mid_mid">
@@ -231,11 +254,6 @@
 	        $('#userType').val('company'); // '병원' 선택 시
 	    });
 	});
-	
-    // 로그아웃 버튼 클릭 시 로그아웃 처리를 위한 함수
-    function logout() {
-        // 로그아웃 처리를 위한 코드를 여기에 추가
-    }
 	</script>
 </body>
 </html>

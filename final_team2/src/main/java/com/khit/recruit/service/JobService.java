@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.recruit.dto.CompanyDTO;
 import com.khit.recruit.dto.JobDTO;
+import com.khit.recruit.entity.CompanyEntity;
 import com.khit.recruit.entity.Job;
 import com.khit.recruit.exception.BootBoardException;
 import com.khit.recruit.repository.CompanyRepository;
@@ -30,10 +31,9 @@ import lombok.extern.slf4j.Slf4j;
 public class JobService {
 	
 	private final JobRepository jobRepository;
-	private final CompanyRepository companyRepository;
 	
 	
-	public void save(JobDTO jobDTO, MultipartFile jobFile) throws IllegalStateException, IOException {
+	public void save(JobDTO jobDTO, MultipartFile jobFile ) throws IllegalStateException, IOException {
 		//1. 파일을 서버에 저장하고,
 		if(jobFile != null && !jobFile.isEmpty()) {  //전달된 파일이 있으면
 			//저장 경로
@@ -52,6 +52,7 @@ public class JobService {
 			jobDTO.setFilename(filename);
 			jobDTO.setFilepath(filepath); //파일 경로 설정함
 		}
+		
 		//dto -> entity로 변환
 		Job job = Job.toSaveEntity(jobDTO);
 		//entity를 db에 저장
@@ -85,7 +86,7 @@ public class JobService {
 		// Page<Job>를 Page<JobDTO>로 변환
 	    Page<JobDTO> jobDTOList = jobList.map(job -> {
 	        // 각 Job의 CompanyEntity로부터 CompanyDTO를 조회
-	        CompanyDTO companyDTO = companyRepository.findByCid(job.getCompanyEntity().getCid());
+	        //CompanyDTO companyDTO = companyRepository.findByCid(job.getCompany().getCid());
 
 	        // JobDTO 생성, 이 때 companyDTO도 설정
 	        return new JobDTO(
@@ -128,7 +129,7 @@ public class JobService {
 	            job.getCreatedDate(),
 	            job.getUpdatedDate(),
 	            job.getJobHits(),
-	            companyDTO // 여기에 companyDTO 추가
+	            job.getCompany()
 	        );
 	    });
 
@@ -147,7 +148,7 @@ public class JobService {
 		// Page<Job>를 Page<JobDTO>로 변환
 	    Page<JobDTO> jobDTOList = jobList.map(job -> {
 	        // 각 Job의 CompanyEntity로부터 CompanyDTO를 조회
-	        CompanyDTO companyDTO = companyRepository.findByCid(job.getCompanyEntity().getCid());
+	    	//CompanyDTO companyDTO = companyRepository.findByCid(job.getCompany().getCid());
 
 	        // JobDTO 생성, 이 때 companyDTO도 설정
 	        return new JobDTO(
@@ -190,7 +191,7 @@ public class JobService {
 	            job.getCreatedDate(),
 	            job.getUpdatedDate(),
 	            job.getJobHits(),
-	            companyDTO // 여기에 companyDTO 추가
+	            job.getCompany()
 	        );
 	    });
 
@@ -208,7 +209,7 @@ public class JobService {
 		// Page<Job>를 Page<JobDTO>로 변환
 	    Page<JobDTO> jobDTOList = jobList.map(job -> {
 	        // 각 Job의 CompanyEntity로부터 CompanyDTO를 조회
-	        CompanyDTO companyDTO = companyRepository.findByCid(job.getCompanyEntity().getCid());
+	    	//CompanyDTO companyDTO = companyRepository.findByCid(job.getCompany().getCid());
 
 	        // JobDTO 생성, 이 때 companyDTO도 설정
 	        return new JobDTO(
@@ -251,7 +252,7 @@ public class JobService {
 	            job.getCreatedDate(),
 	            job.getUpdatedDate(),
 	            job.getJobHits(),
-	            companyDTO // 여기에 companyDTO 추가
+	            job.getCompany()
 	        );
 	    });
 
@@ -268,7 +269,7 @@ public class JobService {
 		// Page<Job>를 Page<JobDTO>로 변환
 	    Page<JobDTO> jobDTOList = jobList.map(job -> {
 	        // 각 Job의 CompanyEntity로부터 CompanyDTO를 조회
-	        CompanyDTO companyDTO = companyRepository.findByCid(job.getCompanyEntity().getCid());
+	    	//CompanyDTO companyDTO = companyRepository.findByCid(job.getCompany().getCid());
 
 	        // JobDTO 생성, 이 때 companyDTO도 설정
 	        return new JobDTO(
@@ -311,7 +312,7 @@ public class JobService {
 	            job.getCreatedDate(),
 	            job.getUpdatedDate(),
 	            job.getJobHits(),
-	            companyDTO // 여기에 companyDTO 추가
+	            job.getCompany()
 	        );
 	    });
 
