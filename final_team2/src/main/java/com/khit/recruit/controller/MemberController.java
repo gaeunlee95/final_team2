@@ -218,4 +218,9 @@ public class MemberController {
 	public String kLogin(String code) {
 		return "카카오 로그인 성공!: " + code;
 	}
+	
+	@GetMapping("/inquiry")
+	public String inquiry() {
+		return "member/info/inquiry";
+	}
 }

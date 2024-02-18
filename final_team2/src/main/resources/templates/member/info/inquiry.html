@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>문의상담</title>
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<script src="https://kit.fontawesome.com/630c352365.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" th:href="@{/css/member/info/inquiry.css}">
+</head>
+<body>
+	<div th:replace="~{header::header-fragment}"></div>
+	
+	 <div id="container">
+        <section id="mid">
+            <h3>회원정보</h3>
+            <div class="board-menu">
+                <div class="board">
+                    <div><a href="#" class="menu-link">회원정보 수정</a><div></div></div>
+                    <div><a href="#" class="menu-link ">비밀번호 변경</a><div></div></div>
+                    <div><a th:href="@{/member/inquiry}" class="menu-link checked">문의상담</a><div id="circle"></div></div>
+                    <div><a href="#" class="menu-link">회원탈퇴</a><div></div></div>
+                </div>
+            </div>
+
+            <div class="inquiry_list">
+                <div class="inquiry_title">
+                    <p class="inquiry_title_detail1">나의 지원 리스트</p>
+                    <p class="inquiry_title_detail2">내가 지원한 병원에 실시간 문의 후 답변 받아보세요</p>
+                </div>
+                <div class="G_hospital_list">
+                    <div class="hospital_list1">
+                        <h2><b>연세고든병원</b>&nbsp;<span>-&nbsp;물리치료과 중간관리직 채용모집 지원 정형외과</span></h2>
+                        <button class="button">
+                            <span class="button-content" onclick="window.open('/chat', 'popup', 'width=500,height=700'); return false;"><a href="/chat">실시간 문의하기</a></span>
+                        </button> 
+                    </div>
+                    <div class="hospital_list1">
+                        <h2><b>연세고든병원</b>&nbsp;<span>-&nbsp;물리치료과 중간관리직 채용모집 지원 정형외과</span></h2>
+                        <button class="button">
+                            <span class="button-content"><a href="/chat">실시간 문의하기</a></span>
+                        </button> 
+                    </div>
+                    <div class="hospital_list1">
+                        <h2><b>연세고든병원</b>&nbsp;<span>-&nbsp;물리치료과 중간관리직 채용모집 지원 정형외과</span></h2>
+                        <button class="button">
+                            <span class="button-content"><a href="/chat">실시간 문의하기</a></span>
+                        </button> 
+                    </div>
+                    <div class="hospital_list1">
+                        <h2><b>연세고든병원</b>&nbsp;<span>-&nbsp;물리치료과 중간관리직 채용모집 지원 정형외과</span></h2>
+                        <button class="button">
+                            <span class="button-content"><a href="/chat">실시간 문의하기</a></span>
+                        </button> 
+                    </div>
+                    <div class="hospital_list1">
+                        <h2><b>연세고든병원</b>&nbsp;<span>-&nbsp;물리치료과 중간관리직 채용모집 지원 정형외과</span></h2>
+                        <button class="button">
+                            <span class="button-content"><a href="/chat">실시간 문의하기</a></span>
+                        </button>         
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+	
+	<div th:replace="~{footer::footer-fragment}"></div>
+        <script>
+			function openPopup(url, width, height) {
+		    var screenWidth = window.screen.width;
+		    var screenHeight = window.screen.height;
+		    var leftPosition = screenWidth - width;
+		    var topPosition = screenHeight - height;
+		    window.open(url, 'popup', 'width=' + width + ', height=' + height + ', left=' + leftPosition + ', top=' + topPosition);
+			}
+		</script>
+</body>
+</html>
