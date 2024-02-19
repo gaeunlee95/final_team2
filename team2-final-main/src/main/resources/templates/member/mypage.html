@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>마이 페이지</title>
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<script src="https://kit.fontawesome.com/630c352365.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" th:href="@{/css/member/mypage.css}">
+</head>
+<body>
+	<div th:replace="~{header::header-fragment}"></div>
+
+	<div id="container">
+		<div id="mypage_mem">
+		
+			<h2>마이 페이지</h2>
+			
+			<div>
+				<div id="first_row">
+					<div id="profilebox">
+						<p>회원 님</p>
+						<button>등록/수정</button>
+						<img src="/images/defaultprofile.png 	">
+					</div>	
+					<div id="resumebox">
+						<h3>이력서 관리</h3>
+						<ul>
+							<li><a th:href="@{/member/resume}">기본 이력서</a></li>
+							<li>추가 이력서 &nbsp;<span>0</span>건</li>
+						</ul>
+						<button>입사지원파일 관리</button>
+					</div>	
+					<div id="jopappbox">
+						<h3>입사 지원 현황</h3>
+						<ul>
+							<li><a th:href="@{/member/jopapp}">지원 내역 &nbsp;</a><span>0</span>건</li>
+							<li>내 이력서 열람 병원 &nbsp;<span>0</span>건</li>
+							<li>입사 제의 병원 &nbsp;<span>0</span>건</li>
+						</ul>
+					</div>	
+				</div>
+				<div id="second_row">
+					<div id="emptybox">
+					</div>	
+					<div id="announbox">
+						<h3>공고/스크랩 관리</h3>
+						<ul>
+							<li><a th:href="@{/member/announ}">스크랩한 채용공고 &nbsp;</a><span>0</span>건</li>
+							<li>최근 본 공고 &nbsp;<span>0</span>건</li>
+						</ul>
+					</div>	
+					<div id="detailbox">
+						<h3>회원 정보</h3>
+						<ul>
+							<li>회원정보 수정</li>
+							<li>비밀번호 변경</li>
+							<li>1대1 상담</li>
+							<li>회원 탈퇴</li>
+						</ul>
+					</div>	
+				</div>
+			</div>
+		
+		</div>
+	</div>
+	
+	<div th:replace="~{footer::footer-fragment}"></div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>지원 내역</title>
+<link rel="stylesheet" th:href="@{/css/footer.css}">
+<link rel="stylesheet" th:href="@{/css/header.css}">
+<script src="https://kit.fontawesome.com/630c352365.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" th:href="@{/css/member/jopapp.css}">
+</head>
+<body>
+	<div th:replace="~{header::header-fragment}"></div>
+
+	<h2>마이 페이지</h2>
+	<div id="jopapp">
+		<div id="category">
+			<div><p>지원 내역</p><div id="circle"></div></div>
+			<div><p>&nbsp;내 이력서 열람 병원</p></div>
+			<div><p>&nbsp;입사제의 병원</p></div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th class="jopappNum">NO</th>
+					<th class="jopappHos">지원한 병원</th>
+					<th class="jopappJobpost">지원한 이력서</th>
+					<th class="jopappEnd">이력서 열람</th>
+					<th class="jopappEnd">지원 취소</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="jopappNum">1</td>
+					<td class="jopappHos">
+						<p>무야호척추</p>
+					</td>
+					<td class="jopappJobpost">
+						<p>야호</p>
+					</td>
+					<td class="jopappYet">
+						<button>미열람</button>
+					</td>
+					<td class="cancel">
+						<button>취소</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="jopappNum">1</td>
+					<td class="jopappHos">
+						<p>무야호척추</p>
+					</td>
+					<td class="jopappJobpost">
+						<p>야호</p>
+					</td>
+					<td class="jopappOpen">
+						<button>열람</button>
+					</td>
+					<td class="cancel">
+						<button>취소</button>
+					</td>
+				</tr>
+			</tbody>		
+		</table>
+	</div>
+	
+	<div th:replace="~{footer::footer-fragment}"></div>
+</body>
+</html>
