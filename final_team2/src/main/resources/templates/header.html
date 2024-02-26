@@ -12,7 +12,12 @@
             <div class="top_menu">
                 <div class="top_menuWrap">
                 <a th:href="@{/job/job_main}">채용공고</a>
-                <a th:href="@{/resume/main}">이력서 등록</a>
+                <th:block sec:authorize="!hasAuthority('COMPANY')">
+				    <a th:href="@{/resume/main}">이력서 등록</a>
+				</th:block>
+                <th:block sec:authorize="hasAuthority('COMPANY')">
+                	<a th:href="@{/resume/main}">인재정보</a>
+                </th:block>  
                 <div class="top_dropdown">
                     <a th:href="@{/board/noti}">커뮤니티</a>
                     <div class="top_dropdown-options">

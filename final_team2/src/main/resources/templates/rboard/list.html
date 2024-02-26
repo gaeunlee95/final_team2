@@ -57,7 +57,7 @@
       
                             </div>
                             <div class="review_img">
-                                <img th:src="${review.filepath}" width="120" height="120">
+                                <img th:src="@{|/upload/${review.filename}|}" width="120" height="120">
                             </div>
                         </div>
                     </div>

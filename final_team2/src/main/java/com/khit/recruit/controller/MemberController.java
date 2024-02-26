@@ -151,7 +151,7 @@ public class MemberController {
 		return "member/resume";
 	}
 	
-	//* 회원정보 수정 */
+	//* 회원정보 수정페이지 */
 	@GetMapping("/update/{mid}")
 	public String updateForm(@PathVariable Long mid, Model model,
 							 @AuthenticationPrincipal SecurityUser principal) {
@@ -160,8 +160,11 @@ public class MemberController {
 		return "member/detail";
 	}
 	
-	@PostMapping("/update")
-	public String update(@ModelAttribute MemberDTO memberDTO) {
+	// 회원 수정
+	@PostMapping("/update/{mid}")
+	public String update(MemberDTO memberDTO,
+			 @AuthenticationPrincipal SecurityUser principal) {
+		//MemberDTO memberDTO = memberService.findById(principal.getMember().getMid());
 		memberService.update(memberDTO);
 		
 		return "redirect:/" + memberDTO.getMid();

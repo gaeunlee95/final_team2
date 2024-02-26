@@ -19,6 +19,7 @@
     <div id="container">
       <section class="board-write">
 		  <form th:action="@{/board/write}+@{?boardType=}+${boardType}"
+		  		enctype="multipart/form-data"
 				method="post"
   			    id="write-form"
 			    th:object="${board}"  >
@@ -58,6 +59,7 @@
                       </span>
                     </label>
                     <input type="file"
+                    	   name="file"
 						   id="board-upload"
 						   hidden
 						   accept="image/jpeg, image/png, image/jpg"

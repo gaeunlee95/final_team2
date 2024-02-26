@@ -137,7 +137,7 @@
    			<div id="location">
    				<div id="map_box">
 		   			<div id="map" style=" height:400px;">
-		   				<img th:src="@{/images/job/site_map1.jpg}" alt="map">
+		   				<!-- <img th:src="@{/images/job/site_map1.jpg}" alt="map"> -->
 		   				<!-- 지도 표시 -->
 		   			</div>
 		   			<div id="map_button">
@@ -161,7 +161,7 @@
    			
    			<!-- 지원 버튼 -->
 			<div id="apply_btns">
-				<button class="search-button" onclick="apply()">즉시 지원</button>
+				<button class="search-button" onclick="return apply()">즉시 지원</button>
 				<button class="search-button">이메일 지원</button>
 			</div>
 			
@@ -365,7 +365,7 @@
 			
 			<!-- 지원 버튼 -->
 				<div id="apply_btns" >
-					<button class="search-button" onclick="apply()">즉시 지원</button>
+					<button class="search-button" onclick="return apply()">즉시 지원</button>
 					<button class="search-button">이메일 지원</button>
 				</div>
 			</form>
@@ -388,7 +388,7 @@
 	  }
 	
     /* jquery 환경 - 버튼 클릭 이벤트 */
-	/* $(function(){
+	$(function(){
 		//네이버 지도 표시
 		var HOME_PATH = window.HOME_PATH || '.';
 
@@ -426,7 +426,7 @@
 	    });
 	
 	    infowindow.open(map, marker);
-	}); */
+	});
     
     //카테고리 상단 고정
 	$(document).ready(function(){

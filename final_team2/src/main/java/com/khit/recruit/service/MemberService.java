@@ -125,6 +125,7 @@ public class MemberService {
 			memberDTO.setFilename(findById(memberDTO.getMid()).getFilename());
 			memberDTO.setFilepath(findById(memberDTO.getMid()).getFilepath());
 		}
+		
 		MemberEntity member = MemberEntity.toSaveUpdate(memberDTO);
 	    memberRepository.save(member);
 	    return memberDTO;
@@ -153,11 +154,14 @@ public class MemberService {
 
 	public void update(MemberDTO memberDTO) {
 		//암호화, 권한 설정
-		String encPW = pwEncoder.encode(memberDTO.getMpasswd());
-		memberDTO.setMpasswd(encPW);
+		/*
+		 * String encPW = pwEncoder.encode(memberDTO.getMpasswd());
+		 * memberDTO.setMpasswd(encPW);
+		 */
 		memberDTO.setRole(Role.MEMBER);
 		
 		//변환시 엔티티 메서드를 toSaveUpdate()로 바꿔줌
+		memberDTO.setMpasswd(memberRepository.findByMemberId(memberDTO.getMemberId()).get().getMpasswd());
 		MemberEntity member = MemberEntity.toSaveUpdate(memberDTO);
 		
 		memberRepository.save(member);

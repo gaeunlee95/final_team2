@@ -121,8 +121,10 @@ public class Job extends BaseEntity{
 	@Column
 	private String facilities;		//복리후생_시설지원
 	
+	@Column
 	private String startDate;		//공고등록일
 	
+	@Column
 	private String endDate;			//공고마감일
 	
 	@Column
@@ -139,6 +141,8 @@ public class Job extends BaseEntity{
 	
 	@Column
 	private Integer jobHits;
+	
+	private boolean isScrapped;
 	
 	@ManyToOne
 	@JoinColumn

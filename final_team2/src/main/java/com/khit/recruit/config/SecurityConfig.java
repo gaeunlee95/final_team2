@@ -33,10 +33,10 @@ public class SecurityConfig {
 		http.userDetailsService(customCompanyService);
         
 		http.authorizeHttpRequests(authorize -> authorize
-                                .requestMatchers("/**", "/css/**", "/images/**", "/js/**", "/mail/**", "/error").permitAll()
-                                .requestMatchers("/board/write").authenticated()
+                                .requestMatchers("/", "/main", "/css/**", "/images/**", "/js/**", "/mail/**", "/error").permitAll()
+                                .requestMatchers("/board/write", "resume/**" ).authenticated()
                                 .requestMatchers("/member/list").hasAnyAuthority("ADMIN")
-                                .requestMatchers("/member/**", "/board/**").permitAll()
+                                .requestMatchers("/member/**", "/board/**", "/job/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .csrf(csrf -> csrf.disable())

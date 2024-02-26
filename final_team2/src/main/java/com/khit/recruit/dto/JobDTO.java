@@ -60,6 +60,8 @@ public class JobDTO {
 	//CompanyDTO 추가
 	private CompanyEntity company;
 	
+	private boolean isScrapped;
+	
 	//entity -> dto로 변환할 정적 메서드
 	//db에 있는 모든 칼럼을 가져옴
 	public static JobDTO toSaveDTO(Job job) {

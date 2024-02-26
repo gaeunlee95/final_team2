@@ -27,9 +27,12 @@
                                 <p class="pp2" th:text="${#dates.format(board.createdDate, 'yyyy.MM.dd')}"></p>
                             </div>
                         </div>
-                        <div class="detail_img">
-                            <img th:src="@{/images/board/bg_default.png}" class="detail-img">
-                        </div>
+                        <!-- 리뷰게시판에만 filepath 칼럼이 있으니, review에서만 이미지 뜨도록 -->
+                        <th:block th:if="${boardType == 'review'}">
+							<div class="detail_img" >
+							   <img th:if="${board.filepath != null and board.filepath != ''}" th:src="@{|/upload/${board.filename}|}" class="detail-img">
+							</div>
+						</th:block>
                         <div class="detail-content">
                             <p th:text="${board.content}"></p>
                         </div>

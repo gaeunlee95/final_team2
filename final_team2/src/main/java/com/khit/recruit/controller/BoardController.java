@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.swing.text.html.parser.Entity;
 
@@ -32,7 +33,6 @@ public class BoardController {
     private final BoardService boardService;
 
     private final CommentService commentService;
-
 
     @GetMapping("/noti")
     public String boardListForm(
@@ -226,6 +226,7 @@ public class BoardController {
     public String boardWritePost(
         Review review,
         @RequestParam(name = "boardType") String boardType,
+        @RequestParam(name = "file", required = false) MultipartFile file,
         HttpServletRequest request // request header에 security에서 설정한 사용자 인증정보가 들어있습니다.
     ) {
         String userName =
@@ -279,7 +280,7 @@ public class BoardController {
                     review.setAuthor(userName);
                     review.setViews(0);
                     review.setLikes(0);
-                    boardService.reviewSave(review);
+                    boardService.reviewSave(review, file);
                 } catch (Exception e) {
                     log.info("reviewSave error....." + e.getMessage());
                     return "board/write";

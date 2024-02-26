@@ -1,12 +1,14 @@
 package com.khit.recruit.controller;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.recruit.config.SecurityCompany;
+import com.khit.recruit.config.SecurityUser;
 import com.khit.recruit.dto.CompanyDTO;
 import com.khit.recruit.dto.JobDTO;
 import com.khit.recruit.service.JobService;
@@ -71,24 +74,36 @@ public class JobController {
 		@RequestParam(value="city", required = false) String city,
 		@RequestParam(value="sort", required = false, defaultValue = "register") String sort,
 		@PageableDefault(page = 1) Pageable pageable,
-		Model model) {
+		Model model,
+		@AuthenticationPrincipal SecurityUser principal) {
 		
-		//검색어가 없으면 페이지 처리를 하고, 검색어가 있으면 검색어로 페이지 처리
+		Long mid = null;
+		//로그인한 유저의 mid
+		if(principal != null) {
+			mid = principal.getMember().getMid();
+		}
+		
 		Page<JobDTO> jobDTOList = null;
 		if (city != null && !city.isEmpty()) {
-	        jobDTOList = jobService.findByAddress01Containing(city, pageable);
+	        jobDTOList = jobService.findByAddress01Containing(city, pageable, mid);
 	    } else if (keyword != null) {
 	        // 기존의 검색 로직 유지
 	        if(type != null && type.equals("title")) {
-	            jobDTOList = jobService.findByJobTitleContaining(keyword, pageable);
+	            jobDTOList = jobService.findByJobTitleContaining(keyword, pageable, mid);
 	        } else if(type != null && type.equals("cname")){
-	            jobDTOList = jobService.findByCnameContaining(keyword, pageable);
+	            jobDTOList = jobService.findByCnameContaining(keyword, pageable, mid);
 	        } else {
-	            jobDTOList = jobService.findListAll(pageable);
+	            jobDTOList = jobService.findListAll(pageable, mid);
 	        }
+	      //검색어, 지역이 없으면 페이지 처리
 	    } else {
-	        jobDTOList = jobService.findListAll(pageable);
+	        jobDTOList = jobService.findListAll(pageable, mid);
 	    }
+		
+		/*if(city != null || keyword)
+		Page<JobDTO> jobDTOList = jobService.findJobs(type, keyword, city, sort, pageable);
+		*/
+		
 		log.info("jobDTOList : " + jobDTOList );
 		
 		//하단의 페이지 블럭 만들기
@@ -158,6 +173,20 @@ public class JobController {
 		
 		return "cpMypage/jobList";
 	}
+	
+	// 스크랩 하기
+	@PostMapping("/scrap/{jid}")
+	// ResponseEntity<?> 다양한 타입을 반환
+	public ResponseEntity<?> scrapJob(@PathVariable("jid") Long jid, 
+			@AuthenticationPrincipal SecurityUser principal) {
+	    // 스크랩 로직 구현
+	    // principal에서 현재 로그인한 사용자 정보를 가져와 스크랩 처리
+	    boolean isScrapped = jobService.scrapJob(jid, principal.getMember().getMid());
+	    log.info("scrap: " + isScrapped);
+	    return ResponseEntity.ok().body(Map.of("isScrapped", isScrapped));
+	}
+	
+
 	
 	
 }
