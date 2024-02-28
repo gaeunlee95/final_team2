@@ -25,7 +25,8 @@ public class CompanyDTO {
 	private String ownerphone;
 	private String cname;
 	private String tel;
-	private String caddress;
+	private String roadAddress;
+	private String detailAddress;
 	private String postalcode;
 	private Timestamp createdDate; 
 	private String email;
@@ -45,7 +46,8 @@ public class CompanyDTO {
 				.ownerphone(companyEntity.getOwnerphone())
 				.cname(companyEntity.getCname())
 				.tel(companyEntity.getTel())
-				.caddress(companyEntity.getCaddress())
+				.roadAddress(companyEntity.getRoadAddress())
+				.detailAddress(companyEntity.getDetailAddress())
 				.postalcode(companyEntity.getPostalcode())
 				.createdDate(companyEntity.getCreatedDate())
 				.email(companyEntity.getEmail())

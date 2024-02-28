@@ -1,4 +1,7 @@
 @charset "UTF-8";
+
+input{outline-color: #4e66ffc9;}
+
 ul li{list-style: none;}
 ul{padding: 0;}
 #joinform02 #joinform02_box{

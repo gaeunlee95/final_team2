@@ -35,10 +35,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="job : ${jobList}">
-                            <td class="resumeNum" th:text="${job.jid}"></td>
-							<td class="resumeTitle"><a th:href="@{|/job/${job.jid}|(page=${jobList.number+1})}" th:text="${job.title}"></a></td>
-							<td class="resumeUpdate"><a th:href="@{|/job/${job.jid}|(page=${jobList.number+1})}" th:text="${job.title}"></a></td>
+                        <tr th:each="apply : ${applyList}">
+                            <td class="resumeNum" th:text="${apply.aid}"></td>
+							<td class="resumeTitle"><a th:href="@{|/job/${apply.job.jid}|(page=${applyList.number+1})}" th:text="${apply.job.title}"></a></td>
+							<td class="resumeUpdate"><a th:href="@{|/resume/${apply.resume.id}|(page=${applyList.number+1})}" th:text="${apply.resume.title}"></a></td>
 							<!-- <td class="resumeView">
 								<div>열람</div>
 							</td> -->
@@ -60,21 +60,21 @@
 				<div id="pagination">
 					<!-- 이전 페이지 -->
 				<!-- 2page 클릭하면 db 페이지는 1page -->
-				<a th:href="${jobList.first}? '#' : 
-					@{/job/job_main(page=${jobList.number})}"><img th:src="@{/images/job/page_prev.svg}" alt="prev"></a>
+				<a th:href="${applyList.first}? '#' : 
+					@{/member/jopapp(page=${applyList.number})}"><img th:src="@{/images/job/page_prev.svg}" alt="prev"></a>
 				<!-- 페이지 번호 블럭 -->
 				<span th:each="page: ${#numbers.sequence(startPage, endPage)}">
 				 <!-- 현재 페이지는 링크없이 숫자만 표시 -->
-				    <span th:if="${page == jobList.number + 1}"  
+				    <span th:if="${page == applyList.number + 1}"  
 				    	th:text="${page}" class="current_page"></span>
-				    <span th:if="${page != jobList.number + 1}">
-				    	<a th:href="@{/job/job_main(page=${page})}" th:text="${page}"></a>
+				    <span th:if="${page != applyList.number + 1}">
+				    	<a th:href="@{/member/jopapp(page=${page})}" th:text="${page}"></a>
 				    </span>
 				</span>
 				<!-- 다음 페이지 -->
 				<!-- 현재 2page -> 3page  실제페이지는 1page -->
-						<a th:href="${jobList.last} ? '#' : 
-								@{/job/job_main(page=${jobList.number+2})}"><img th:src="@{/images/job/page_next.svg}" alt="map"></a>
+						<a th:href="${applyList.last} ? '#' : 
+								@{/member/jopapp(page=${applyList.number+2})}"><img th:src="@{/images/job/page_next.svg}" alt="map"></a>
 				</div>
 				 
 						

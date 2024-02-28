@@ -23,6 +23,7 @@ a:hover {
 button:hover {
   cursor: pointer;
 }
+input{outline-color: #4e66ffc9;}
 
 
 /* ===top=========================================================== */

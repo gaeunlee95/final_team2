@@ -16,6 +16,7 @@
 *{
 	font-family: 'Pretendard-Medium';
 }
+input{outline-color: #4e66ffc9;}
 
 #joinform01 #joinform01_box{
 	width: 755px;

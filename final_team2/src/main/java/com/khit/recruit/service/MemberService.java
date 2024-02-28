@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,10 +19,13 @@ import com.khit.recruit.dto.MemberDTO;
 import com.khit.recruit.entity.CompanyEntity;
 import com.khit.recruit.entity.Job;
 import com.khit.recruit.entity.MemberEntity;
+import com.khit.recruit.entity.Resume;
 import com.khit.recruit.entity.Role;
 import com.khit.recruit.exception.BootBoardException;
 import com.khit.recruit.repository.CompanyRepository;
+import com.khit.recruit.repository.JobRepository;
 import com.khit.recruit.repository.MemberRepository;
+import com.khit.recruit.repository.ResumeRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +35,7 @@ public class MemberService {
 
 	private final MemberRepository memberRepository;
 	private final CompanyRepository companyRepository;
+	private final ResumeRepository resumeRepository;
 	
 	private final PasswordEncoder pwEncoder;
 	
@@ -46,7 +54,10 @@ public class MemberService {
 	public String memberIdCheck(String memberId) {
 		//db에 있는 이메일을 조회해서 있으면 "OK" 없으면 "NO"를 보냄
 		Optional<MemberEntity> findMember = memberRepository.findByMemberId(memberId);
-		if(findMember.isEmpty()) {
+		Optional<CompanyEntity> findCMember = companyRepository.findByCompanyId(memberId);
+		
+		//일반회원, 기업회원 테이블에 모두 중복된 아이디가 없을때
+		if(findMember.isEmpty() && findCMember.isEmpty()) {
 			return "OK";
 		}else {
 			return "NO";
@@ -114,20 +125,68 @@ public class MemberService {
 			memberDTO.setFilename(findById(memberDTO.getMid()).getFilename());
 			memberDTO.setFilepath(findById(memberDTO.getMid()).getFilepath());
 		}
+		
 		MemberEntity member = MemberEntity.toSaveUpdate(memberDTO);
 	    memberRepository.save(member);
 	    return memberDTO;
 	}
+	
+	public CompanyDTO update(CompanyDTO companyDTO, MultipartFile companyFile) throws Exception {
+		if(!companyFile.isEmpty()) { //전달된 파일이 있으면
+			UUID uuid = UUID.randomUUID();  //무작위 아이디 생성(중복파일의 이름을 생성해줌)
+			  String filename = uuid + "_" + companyFile.getOriginalFilename(); //원본 파일
+			  String filepath = "C:/springfiles/" + filename;
+			  //File 클래스 객체 생성
+			  File savedFile = new File(filepath); //실제 저장되는 파일
+			  companyFile.transferTo(savedFile);
+			  //2.파일 이름은 db에 저장
+			  companyDTO.setFilename(filename);
+			  companyDTO.setFilepath(filepath); //파일 경로 설정함
+		}else {
+			//수정할 파일이 없으면 게시글 번호 경로만 보여줌
+			companyDTO.setFilename(findById(companyDTO.getCid()).getFilename());
+			companyDTO.setFilepath(findById(companyDTO.getCid()).getFilepath());
+		}
+		CompanyEntity company = CompanyEntity.toSaveUpdate(companyDTO);
+		companyRepository.save(company);
+	    return companyDTO;
+	}
 
 	public void update(MemberDTO memberDTO) {
 		//암호화, 권한 설정
-		String encPW = pwEncoder.encode(memberDTO.getMpasswd());
-		memberDTO.setMpasswd(encPW);
+		/*
+		 * String encPW = pwEncoder.encode(memberDTO.getMpasswd());
+		 * memberDTO.setMpasswd(encPW);
+		 */
 		memberDTO.setRole(Role.MEMBER);
 		
 		//변환시 엔티티 메서드를 toSaveUpdate()로 바꿔줌
+		memberDTO.setMpasswd(memberRepository.findByMemberId(memberDTO.getMemberId()).get().getMpasswd());
 		MemberEntity member = MemberEntity.toSaveUpdate(memberDTO);
 		
 		memberRepository.save(member);
 	}
+
+	public CompanyDTO findByCId(Long cid) {
+		Optional<CompanyEntity> findCompany = companyRepository.findByCid(cid);
+		if(findCompany.isPresent()) {
+			CompanyDTO companyDTO = CompanyDTO.toSaveDTO(findCompany.get());
+			
+			return companyDTO;
+		}else {
+			return null;
+		}
+	}
+
+	public Page<Resume> findListAll(Pageable pageable) {
+		int page = pageable.getPageNumber() - 1; //db는 현재페이지보다 1 작아야함
+		int pageSize = 10;
+		pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "id");
+		
+		Page<Resume> resumeList = resumeRepository.findAll(pageable);
+		
+		return resumeList;
+	}
+
+
 }

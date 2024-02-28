@@ -7,6 +7,7 @@
   font-family: 'Pretendard-Medium';
   box-sizing: border-box;
 }
+input{outline-color: #4e66ffc9;}
 #container{width: 100%;}
 ul li{list-style: none;}
 a{text-decoration: none;}

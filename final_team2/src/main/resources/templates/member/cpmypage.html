@@ -22,19 +22,21 @@
 					<div id="profilebox">
 						<p><span sec:authentication="principal.company.cname"></span> 담당자 님</p>
 						<button type="button" id="modify" onclick="openModal()">등록/수정</button>
-						<img src="/images/defaultprofile.png">
+						
+						<img th:if="${company.filepath == null or company.filepath == ''}" th:src="@{/images/member/defaultprofile.png}" alt="profile" />
+						<img th:if="${company.filepath != null and company.filepath != ''}"  th:src="@{|/upload/${company.filename}|}" alt="profile" />
 					</div>	
 					<div id="resumebox">
 						<h3>지원자 관리</h3>
 						<ul>
-							<li><a th:href="@{/member/resume}">지원자&nbsp;<span>0</span>명</a></li>
+							<li><a th:href="@{/cpMypage/applicant}">지원자&nbsp;<span>0</span>명</a></li>
 						</ul>
 						<button>구직자 리스트</button>
 					</div>	
 					<div id="jopappbox">
 						<h3>공고글 관리</h3>
 						<ul>
-							<li><a th:href="@{/member/jopapp}">작성한 공고글 &nbsp;</a><span>0</span>건</li>
+							<li><a th:href="@{/job/jobList}">작성한 공고글 &nbsp;</a><span>0</span>건</li>
 							<li>임시 저장한 글 &nbsp;<span>0</span>건</li>
 						</ul>
 					</div>	
@@ -72,13 +74,12 @@
 					<form id="profile_pic" name="profile" th:action="@{/member/cpProfileUpdate}" method="post" enctype="multipart/form-data">
 						<p>ㆍ이미지 파일을 업로드해 주시기 바랍니다</p>
 						<p>ㆍ사진 크기 조정<br>&nbsp;&nbsp;&nbsp;[그림판 파일 불러오기 -> 상단 크기 조정 선택 -> 픽셀 수정]</p>
-						<input type="file" name="profile_pic">
+						<input type="file" name="companyFile">
 						<div>
-							<div onclick="saveProfile">등록</div>
+							<div onclick="saveProfile()">등록</div>
 							<div onclick="closeModal()">취소</div>
 						</div>
 					</form>
-					
 			      </div>
 			</div>
 			
@@ -105,7 +106,7 @@
 		  function saveProfile() {
 		    // 여기에 프로필 저장 로직을 추가하세요
 		    let form = document.profile; 
-		    alert('프로필이 저장되었습니다.'); // 예시로 경고창을 띄우는 것입니다.
+		    //alert('프로필이 저장되었습니다.'); // 예시로 경고창을 띄우는 것입니다.
 		    form.submit();
 		    closeModal(); // 저장 후 모달 창 닫기
 		  }

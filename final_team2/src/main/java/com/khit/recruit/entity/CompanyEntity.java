@@ -53,7 +53,10 @@ public class CompanyEntity extends BaseEntity{
 	private String tel;
 	
 	@Column(nullable = true)
-	private String caddress;
+	private String roadAddress;
+	
+	@Column(nullable = true)
+	private String detailAddress;
 	
 	@Column(nullable = true, length = 30)
 	private String postalcode;
@@ -80,7 +83,31 @@ public class CompanyEntity extends BaseEntity{
 				.ownerphone(companyDTO.getOwnerphone())
 				.cname(companyDTO.getCname())
 				.tel(companyDTO.getTel())
-				.caddress(companyDTO.getCaddress())
+				.roadAddress(companyDTO.getRoadAddress())
+				.detailAddress(companyDTO.getDetailAddress())
+				.postalcode(companyDTO.getPostalcode())
+				.email(companyDTO.getEmail())
+				.filename(companyDTO.getFilename())
+				.filepath(companyDTO.getFilepath())
+				.role(companyDTO.getRole())
+				.build();
+		
+		return company;
+	}
+
+
+	public static CompanyEntity toSaveUpdate(CompanyDTO companyDTO) {
+		CompanyEntity company = CompanyEntity.builder()
+				.cid(companyDTO.getCid())
+				.brNum(companyDTO.getBrNum())
+				.companyId(companyDTO.getCompanyId())
+				.cpasswd(companyDTO.getCpasswd())
+				.ownername(companyDTO.getOwnername())
+				.ownerphone(companyDTO.getOwnerphone())
+				.cname(companyDTO.getCname())
+				.tel(companyDTO.getTel())
+				.roadAddress(companyDTO.getRoadAddress())
+				.detailAddress(companyDTO.getDetailAddress())
 				.postalcode(companyDTO.getPostalcode())
 				.email(companyDTO.getEmail())
 				.filename(companyDTO.getFilename())

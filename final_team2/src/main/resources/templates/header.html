@@ -12,47 +12,53 @@
             <div class="top_menu">
                 <div class="top_menuWrap">
                 <a th:href="@{/job/job_main}">채용공고</a>
-                <a href="">이력서 등록</a>
+                <th:block sec:authorize="!hasAuthority('COMPANY')">
+				    <a th:href="@{/resume/main}">이력서 등록</a>
+				</th:block>
+                <th:block sec:authorize="hasAuthority('COMPANY')">
+                	<a th:href="@{/resume/main}">인재정보</a>
+                </th:block>  
                 <div class="top_dropdown">
-                    <a href="">커뮤니티</a>
+                    <a th:href="@{/board/noti}">커뮤니티</a>
                     <div class="top_dropdown-options">
-                        <a th:href="@{/board/list}">공지사항</a>
-                        <a th:href="@{/board/list}">QNA</a>
-                        <a th:href="@{/board/list}">자유게시판</a>
+                        <a th:href="@{/board/noti}">공지사항</a>
+                        <a th:href="@{/board/qna}">QNA</a>
+                        <a th:href="@{/board/free}">자유게시판</a>
                         <a th:href="@{/rboard/list}">리뷰</a>
                     </div>
                 </div>
                     <a th:href="@{/member/inquiry}">문의상담</a>
                 </div>
             </div>
-			
-			<!-- 로그인 전 -->
-			<th:block sec:authorize="isAnonymous()">
-	            <div class="login">			
-	                <i class="fa-solid fa-user"></i>
-	                <div class="login_b">
-	                    <a th:href="@{/member/login}">로그인</a> |
-	                    <a th:href="@{/member/identity}">회원가입</a> 
-	                </div>
-	             </div>
+         
+         <!-- 로그인 전 -->
+         <th:block sec:authorize="isAnonymous()">
+               <div class="login">         
+                   <i class="fa-solid fa-user"></i>
+                   <div class="login_b">
+                       <a th:href="@{/member/login}">로그인</a> |
+                       <a th:href="@{/member/identity}">회원가입</a> 
+                   </div>
+                </div>
             </th:block>
             
             <th:block sec:authorize="isAuthenticated()">
-            	<div class="login" sec:authorize="hasAuthority('MEMBER')">			
-	                <!-- <i class="fa-solid fa-user"></i> -->
-	                <div class="login_b">
-	                	[<span sec:authentication="principal.member.mname"></span>]님 | 
-	                    <a th:href="@{/member/logout}">로그아웃</a>
-	                </div>
-	             </div>
-	             
-	             <div class="login" sec:authorize="hasAuthority('COMPANY')">			
-	               <!--  <i class="fa-solid fa-user"></i> -->
-	                <div class="login_b">
-	                	[<span sec:authentication="principal.company.cname"></span>] 담당자님 
-	                    <a th:href="@{/member/logout}">로그아웃</a>
-	                </div>
-	             </div>    
+               <div class="login" sec:authorize="hasAuthority('MEMBER')">         
+                   <!-- <i class="fa-solid fa-user"></i> -->
+                   <div class="login_b">
+                      [<span sec:authentication="principal.member.mname"></span>]님 | 
+                       <a th:href="@{/member/logout}">로그아웃</a>
+                   </div>
+                </div>
+                
+                <div class="login" sec:authorize="hasAuthority('COMPANY')">         
+                  <!--  <i class="fa-solid fa-user"></i> -->
+                   <div class="login_b">
+                      [<span sec:authentication="principal.company.cname"></span>] 담당자님 |
+                       <a th:href="@{/member/logout}">로그아웃</a>
+                   </div>
+                </div>
+                
             </th:block>
     </section>
      </div>

@@ -6,21 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="login_box"/>
+		<item key="selection" value="R_img"/>
 		<list key="findhistory">
+			<item value="R_img"/>
+			<item value="R-img"/>
+			<item value="main_decorate2"/>
+			<item value="&#x09;&#x09;&#x09;main_decorate2"/>
+			<item value="&#x09;&#x09;&#x09;&lt;div class=&quot;decorate_img&quot;&gt;"/>
+			<item value="review_caption p"/>
+			<item value="prod-list1"/>
+			<item value="prod-list"/>
+			<item value="@charset &quot;UTF-8&quot;;"/>
+			<item value="hospital_list1"/>
+			<item value="hospital"/>
+			<item value="board-title h3"/>
+			<item value="board-menu"/>
 			<item value="login_box"/>
 			<item value="mid_top img"/>
-			<item value="announce_box"/>
-			<item value="th:"/>
-			<item value="th"/>
-			<item value="@charset &quot;UTF-8&quot;;"/>
-			<item value="alert alert-secondary"/>
-			<item value="element"/>
-			<item value="&lt;!DOCTYPE html&gt;"/>
-			<item value="style"/>
-			<item value="package com.khit.recruit.controller;"/>
-			<item value="curr ent_page"/>
-			<item value="pagination"/>
 		</list>
 		<list key="replacehistory">
 		</list>

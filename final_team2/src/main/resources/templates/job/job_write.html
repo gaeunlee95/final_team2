@@ -26,7 +26,7 @@
 	   		<p class="title">공고 등록</p>
 	   		
 	   		<!-- company_entity_cid 값 -->
-	   		<input type="text" th:value="${#authentication.principal.company.cid}" name="company.cid">
+	   		<input type="hidden" th:value="${#authentication.principal.company.cid}" name="company.cid">
 	   		
 	   		<div id="job_write_body01">
 	   			<div>

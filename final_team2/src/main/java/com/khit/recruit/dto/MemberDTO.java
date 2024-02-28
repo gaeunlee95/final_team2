@@ -2,14 +2,25 @@ package com.khit.recruit.dto;
 
 import java.sql.Timestamp;
 
+import com.khit.recruit.entity.CompanyEntity;
 import com.khit.recruit.entity.MemberEntity;
 import com.khit.recruit.entity.Role;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Builder
-@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 public class MemberDTO {
 	
 	private Long mid;
@@ -25,8 +36,7 @@ public class MemberDTO {
 	private String filepath;
 	private Role role;
 	
-	public static MemberDTO toSaveDTO(MemberEntity
-			member) {
+	public static MemberDTO toSaveDTO(MemberEntity member) {
 		MemberDTO memberDTO = MemberDTO.builder()
 				.mid(member.getMid())
 				.memberId(member.getMemberId())

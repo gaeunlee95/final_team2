@@ -17,10 +17,14 @@
         <h3>커뮤니티</h3>
         <div class="board-menu">
             <div class="board">
-                <div><a href="#" class="menu-link checked">공지사항</a><div id="circle"></div></div>
-                <div><a href="#" class="menu-link ">QNA</a><div></div></div>
-                <div><a href="#" class="menu-link">자유게시판</a><div></div></div>
-                <div><a href="#" class="menu-link">리뷰</a><div></div></div>
+                <div class="board-menu">
+            <div class="board">
+                <a th:href="@{/board/noti}" class="menu-link1 ">공지사항</a>
+                <a th:href="@{/board/qna}" class="menu-link2">QNA</a>
+                <a th:href="@{/board/free}" class="menu-link3">자유게시판</a>
+                <a th:href="@{/rboard/list}" class="menu-link4 checked">리뷰</a>
+            </div>
+        </div>
             </div>
         </div>
     

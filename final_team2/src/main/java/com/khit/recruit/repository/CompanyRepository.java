@@ -10,5 +10,5 @@ import com.khit.recruit.entity.CompanyEntity;
 public interface CompanyRepository extends JpaRepository<CompanyEntity, Long>{
 	Optional<CompanyEntity> findByCompanyId(String String);
 
-	CompanyDTO findByCid(Long cid);
+	Optional<CompanyEntity> findByCid(Long cid);
 }

@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.khit.recruit.config.SecurityCompany;
 import com.khit.recruit.config.SecurityUser;
 import com.khit.recruit.dto.CompanyDTO;
 import com.khit.recruit.dto.JobDTO;
 import com.khit.recruit.dto.MemberDTO;
+import com.khit.recruit.entity.Resume;
 import com.khit.recruit.service.JobService;
 import com.khit.recruit.service.MemberService;
 
@@ -99,49 +101,24 @@ public class MemberController {
 	}
 	
 	@GetMapping("/cpmypage")
-	public String cpmyPage() {
+	public String cpmyPage(@AuthenticationPrincipal SecurityCompany principal, Model model) {
+		CompanyDTO companyDTO = memberService.findByCId(principal.getCompany().getCid());
+		model.addAttribute("company", companyDTO);
 		return "member/cpmypage";
 	}
 	
-	/*@GetMapping("/resume")
-	public String resume() {
-		return "member/resume";
-	}*/
-	
-	@GetMapping("/resume")
-	public String getResumePageList(
-		@RequestParam(value="type", required = false) String type,
-		@RequestParam(value="keyword", required = false) String keyword,
-		@PageableDefault(page = 1) Pageable pageable,
-		Model model) {
+	@PostMapping("/cpProfileUpdate")
+	public String cpProfileUpdate(
+			@RequestParam(name = "companyFile", required = false) MultipartFile companyFile,
+			@AuthenticationPrincipal SecurityCompany principal) throws Exception {
+		//로그인한 유저의 정보를 받아옴
+		CompanyDTO companyDTO = memberService.findByCId(principal.getCompany().getCid());;
+		companyDTO = memberService.update(companyDTO, companyFile);
 		
-		Page<JobDTO> jobDTOList = null;
-		//검색어가 없으면 페이지 처리를 하고, 검색어가 있으면 검색어로 페이지 처리
-		if(keyword == null) {
-			jobDTOList = jobService.findListAll(pageable);
-		}else if(type != null && type.equals("title")) {
-			jobDTOList = jobService.findByJobTitleContaining(keyword, pageable);
-		}else if(type != null && type.equals("content")){
-			jobDTOList = jobService.findByCnameContaining(keyword, pageable);
-		}
-		log.info("jobDTOList : " + jobDTOList );
-		
-		//하단의 페이지 블럭 만들기
-		int blockLimit = 10;  //하단에 보여줄 페이지 개수
-		//시작 페이지 1, 11, 21    12/10 = 1.2 -> 2.2 -> 2-1, 1*10+1 =11
-		int startPage = ((int)(Math.ceil((double)pageable.getPageNumber()/blockLimit))-1)*blockLimit+1;
-		//마지막 페이지 10, 20, 30 //12page -> 12 마지막
-		int endPage = (startPage+blockLimit-1) > jobDTOList.getTotalPages() ?
-				jobDTOList.getTotalPages() : startPage+blockLimit-1;
-		endPage = Math.max(endPage, startPage); // 마지막 페이지는 시작 페이지와 같거나 큼
-		
-		model.addAttribute("jobList", jobDTOList);
-		model.addAttribute("type", type);    //검색 유형 보내기
-		model.addAttribute("kw", keyword);   //검색어 보내기
-		model.addAttribute("startPage", startPage);
-		model.addAttribute("endPage", endPage);
-		return "member/resume";
+	    return "redirect:/member/cpmypage";
 	}
+	
+
 	
 	
 	@GetMapping("/announ")
@@ -149,47 +126,32 @@ public class MemberController {
 		return "member/announ";
 	}
 	
-	/*@GetMapping("/jopapp")
-	public String jopapp() {
-		return "member/jopapp";
-	}*/
-	
-	@GetMapping("/jopapp")
+	//지원 리스트
+	@GetMapping("/resume")
 	public String GetJobAppPageList(
-			@RequestParam(value="type", required = false) String type,
-			@RequestParam(value="keyword", required = false) String keyword,
 			@PageableDefault(page = 1) Pageable pageable,
 			Model model) {
 			
-			Page<JobDTO> jobDTOList = null;
-			//검색어가 없으면 페이지 처리를 하고, 검색어가 있으면 검색어로 페이지 처리
-			if(keyword == null) {
-				jobDTOList = jobService.findListAll(pageable);
-			}else if(type != null && type.equals("title")) {
-				jobDTOList = jobService.findByJobTitleContaining(keyword, pageable);
-			}else if(type != null && type.equals("content")){
-				jobDTOList = jobService.findByCnameContaining(keyword, pageable);
-			}
-			log.info("jobDTOList : " + jobDTOList );
+			Page<Resume> resumeList = null;
+			resumeList = memberService.findListAll(pageable);
+			log.info("ResumeList : " + resumeList );
 			
 			//하단의 페이지 블럭 만들기
 			int blockLimit = 10;  //하단에 보여줄 페이지 개수
 			//시작 페이지 1, 11, 21    12/10 = 1.2 -> 2.2 -> 2-1, 1*10+1 =11
 			int startPage = ((int)(Math.ceil((double)pageable.getPageNumber()/blockLimit))-1)*blockLimit+1;
 			//마지막 페이지 10, 20, 30 //12page -> 12 마지막
-			int endPage = (startPage+blockLimit-1) > jobDTOList.getTotalPages() ?
-					jobDTOList.getTotalPages() : startPage+blockLimit-1;
+			int endPage = (startPage+blockLimit-1) > resumeList.getTotalPages() ?
+					resumeList.getTotalPages() : startPage+blockLimit-1;
 			endPage = Math.max(endPage, startPage); // 마지막 페이지는 시작 페이지와 같거나 큼
 			
-			model.addAttribute("jobList", jobDTOList);
-			model.addAttribute("type", type);    //검색 유형 보내기
-			model.addAttribute("kw", keyword);   //검색어 보내기
+			model.addAttribute("resumeList", resumeList);
 			model.addAttribute("startPage", startPage);
 			model.addAttribute("endPage", endPage);
-		return "member/jopapp";
+		return "member/resume";
 	}
 	
-	//* 회원정보 수정 */
+	//* 회원정보 수정페이지 */
 	@GetMapping("/update/{mid}")
 	public String updateForm(@PathVariable Long mid, Model model,
 							 @AuthenticationPrincipal SecurityUser principal) {
@@ -198,18 +160,31 @@ public class MemberController {
 		return "member/detail";
 	}
 	
-	@PostMapping("/update")
-	public String update(@ModelAttribute MemberDTO memberDTO) {
+	// 회원 수정
+	@PostMapping("/update/{mid}")
+	public String update(MemberDTO memberDTO,
+			 @AuthenticationPrincipal SecurityUser principal) {
+		//MemberDTO memberDTO = memberService.findById(principal.getMember().getMid());
 		memberService.update(memberDTO);
 		
 		return "redirect:/" + memberDTO.getMid();
 	}
 	
-	/* 아이디 중복검사 부분 */
 	//아이디 중복 검사
+	//일반,기업회원 같이 검사
 	@PostMapping("/check-id")
-	public @ResponseBody String checkId(@RequestParam("memberId") String memberId) {
-		String resultText = memberService.memberIdCheck(memberId);
+	public @ResponseBody String checkId(
+			@RequestParam(value = "memberId", required = false) String memberId,
+			 @RequestParam(value = "companyId", required = false) String companyId
+			) {
+		String resultText = "";
+		
+		if(memberId != null && !memberId.isEmpty()) {
+			resultText = memberService.memberIdCheck(memberId);
+		}else if(companyId != null && !companyId.isEmpty()) {
+			resultText = memberService.memberIdCheck(companyId);
+		}
+		log.info(resultText);		
 		return resultText;
 	}
 	
@@ -219,8 +194,6 @@ public class MemberController {
 		return "카카오 로그인 성공!: " + code;
 	}
 	
-	@GetMapping("/inquiry")
-	public String inquiry() {
-		return "member/info/inquiry";
-	}
+	
+	
 }

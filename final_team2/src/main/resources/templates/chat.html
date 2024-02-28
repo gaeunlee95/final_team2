@@ -67,8 +67,8 @@
             // Enter 키 입력 이벤트 리스너 등록
             document.getElementById("msg").addEventListener("keydown", onEnterKey);
 
-            //const websocket = new WebSocket("ws://192.168.20.11:8080/ws/chat");
-            const websocket = new WebSocket("ws://localhost:8080/ws/chat");
+            //const websocket = new WebSocket("ws://192.168.20.17:8080/ws/chat");
+           const websocket = new WebSocket("ws://localhost:8080/ws/chat");
 
             websocket.onmessage = onMessage;
             websocket.onopen = onOpen;

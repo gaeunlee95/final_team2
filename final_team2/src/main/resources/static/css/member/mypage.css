@@ -18,6 +18,7 @@
 #container{width: 100%;}
 ul li{list-style: none;}
 a{text-decoration: none;}
+input{outline-color: #4e66ffc9;}
 
 #mypage_mem{
 	width: 70%;
@@ -109,6 +110,9 @@ a{text-decoration: none;}
     bottom: 25px;
     left: 29px;
     border-radius: 5px;
+    width: 165px;
+    height: 165px;
+    border: 1.5px solid #D9E5F2;
 }
 #resumebox button{
 	font-family: 'Pretendard-SemiBold';

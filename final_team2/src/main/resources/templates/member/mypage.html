@@ -23,24 +23,23 @@
 						<p><span sec:authentication="principal.member.mname"></span> 회원 님</p>
 						<button type="button" id="modify" onclick="openModal()">등록/수정</button>
 						
-						<img th:src="@{/images/member/defaultprofile.png}" alt="profile">
-						<!-- <img th:if="${member.filepath == null or member.filepath == ''}" th:src="@{/images/member/defaultprofile.png}" alt="profile" />
-						<img th:if="${member.filepath != null and member.filepath != ''}"  th:src="@{|/upload/${member.filename}|}" alt="profile" /> -->
+						<img th:if="${member.filepath == null or member.filepath == ''}" th:src="@{/images/member/defaultprofile.png}" alt="profile" />
+						<img th:if="${member.filepath != null and member.filepath != ''}"  th:src="@{|/upload/${member.filename}|}" alt="profile" />
 					</div>	
 					<div id="resumebox">
 						<h3>이력서 관리</h3>
 						<ul>
 							<li><a th:href="@{/member/resume}">기본 이력서</a></li>
-							<li>추가 이력서 &nbsp;<span>0</span>건</li>
+							<li>추가 이력서 &nbsp;<span>1</span>건</li>
 						</ul>
 						<button>입사지원파일 관리</button>
 					</div>	
 					<div id="jopappbox">
 						<h3>입사 지원 현황</h3>
 						<ul>
-							<li><a th:href="@{/member/jopapp}">지원 내역 &nbsp;</a><span>0</span>건</li>
-							<li>내 이력서 열람 병원 &nbsp;<span>0</span>건</li>
-							<li>입사 제의 병원 &nbsp;<span>0</span>건</li>
+							<li><a th:href="@{/member/jopapp}">지원 내역 &nbsp;</a><span>2</span>건</li>
+							<li>내 이력서 열람 병원 &nbsp;<span>3</span>건</li>
+							<li>입사 제의 병원 &nbsp;<span>2</span>건</li>
 						</ul>
 					</div>	
 				</div>
@@ -50,8 +49,8 @@
 					<div id="announbox">
 						<h3>공고/스크랩 관리</h3>
 						<ul>
-							<li><a th:href="@{/member/announ}">스크랩한 채용공고 &nbsp;</a><span>0</span>건</li>
-							<li>최근 본 공고 &nbsp;<span>0</span>건</li>
+							<li><a th:href="@{/member/announ}">스크랩한 채용공고 &nbsp;</a><span>1</span>건</li>
+							<li>최근 본 공고 &nbsp;<span>10</span>건</li>
 						</ul>
 					</div>	
 					<div id="detailbox">
@@ -79,11 +78,10 @@
 						<p>ㆍ사진 크기 조정<br>&nbsp;&nbsp;&nbsp;[그림판 파일 불러오기 -> 상단 크기 조정 선택 -> 픽셀 수정]</p>
 						<input type="file" name="memberFile">
 						<div>
-							<button type="submit">등록</button>
+							<button onclick="saveProfile()">등록</button>
 							<button onclick="closeModal()">취소</button>
 						</div>
 					</form>
-					
 			      </div>
 			</div>
 			
@@ -110,7 +108,7 @@
 		  function saveProfile() {
 		    // 여기에 프로필 저장 로직을 추가하세요
 		    let form = document.profile; 
-		    alert('프로필이 저장되었습니다.'); // 예시로 경고창을 띄우는 것입니다.
+		    //alert('프로필이 저장되었습니다.'); // 예시로 경고창을 띄우는 것입니다.
 		    form.submit();
 		    closeModal(); // 저장 후 모달 창 닫기
 		  }
