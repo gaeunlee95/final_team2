@@ -19,8 +19,7 @@
 			<h2>마이 페이지</h2>
 		
 			<div id="category">
-				<div><p>기본 이력서</p><div id="circle"></div></div>
-				<div><p>추가 이력서</p><div></div></div>
+				<div><p>전체 이력서 관리</p><div id="circle"></div></div>
 			</div>
 			
 			<!-- board list area -->
@@ -79,7 +78,7 @@
 				<!-- 다음 페이지 -->
 				<!-- 현재 2page -> 3page  실제페이지는 1page-->
 						<a th:href="${resumeList.last} ? '#' : 
-								@{//member/resume(page=${jobList.number+2})}"><img th:src="@{/images/job/page_next.svg}" alt="map"></a>
+								@{//member/resume(page=${resumeList.number+2})}"><img th:src="@{/images/job/page_next.svg}" alt="map"></a>
 				</div>
 						
 			</div>

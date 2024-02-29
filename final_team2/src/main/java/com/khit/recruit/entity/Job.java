@@ -41,7 +41,7 @@ public class Job extends BaseEntity{
 	private String occupation;   	//직종
 	
 	@Column(nullable = false)
-	private String salary; 	 	//연봉
+	private String salary; 	 		//연봉
 	
 	@Column
 	private Integer minSalary; 	 	//최소연봉

@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.khit.recruit.entity.Scrap;
 import com.khit.recruit.dto.CompanyDTO;
 import com.khit.recruit.dto.JobDTO;
 import com.khit.recruit.dto.MemberDTO;
@@ -26,6 +27,7 @@ import com.khit.recruit.repository.CompanyRepository;
 import com.khit.recruit.repository.JobRepository;
 import com.khit.recruit.repository.MemberRepository;
 import com.khit.recruit.repository.ResumeRepository;
+import com.khit.recruit.repository.ScrapRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -36,6 +38,7 @@ public class MemberService {
 	private final MemberRepository memberRepository;
 	private final CompanyRepository companyRepository;
 	private final ResumeRepository resumeRepository;
+	private final ScrapRepository scrapRepository;
 	
 	private final PasswordEncoder pwEncoder;
 	
@@ -178,14 +181,26 @@ public class MemberService {
 		}
 	}
 
-	public Page<Resume> findListAll(Pageable pageable) {
+	//이력서 관리
+	public Page<Resume> findListByMember(Pageable pageable, Long mid) {
 		int page = pageable.getPageNumber() - 1; //db는 현재페이지보다 1 작아야함
 		int pageSize = 10;
 		pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "id");
 		
-		Page<Resume> resumeList = resumeRepository.findAll(pageable);
+		Page<Resume> resumeList = resumeRepository.findByMemberMid(pageable, mid);
 		
 		return resumeList;
+	}
+	
+	//스크랩한 채용공고
+	public Page<Scrap> findScrapListByMemberMid(Pageable pageable, Long mid) {
+		int page = pageable.getPageNumber() - 1; //db는 현재페이지보다 1 작아야함
+		int pageSize = 10;
+		pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "sid");
+		
+		Page<Scrap> scrapList = scrapRepository.findByMemberMid(pageable, mid);
+		
+		return scrapList;
 	}
 
 

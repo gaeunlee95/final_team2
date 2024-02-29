@@ -58,7 +58,6 @@ public class ApplyController {
 		Long mid = principal.getMember().getMid();
 
 		Page<ApplyDTO> applyDTOList = null;
-		//검색어가 없으면 페이지 처리를 하고, 검색어가 있으면 검색어로 페이지 처리
 		applyDTOList = applyService.findListByMid(pageable, mid);
 		log.info("applyDTOList : " + applyDTOList );
 		

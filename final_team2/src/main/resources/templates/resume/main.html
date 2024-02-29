@@ -22,6 +22,9 @@
           th:object="${resume}"
           method="post"
           enctype="multipart/form-data">
+          
+        <input type="hidden" name="member" th:value="${#authentication.principal.member.mid}">  
+          
         <main id="resume-container">
             <div class="resume-title">
                 <label for="resume-title">이력서 제목</label>

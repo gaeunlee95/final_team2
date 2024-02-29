@@ -12,5 +12,7 @@ import java.util.Optional;
 
 public interface ResumeRepository extends JpaRepository<Resume, Long>{
 
+	Page<Resume> findByMemberMid(Pageable pageable, Long mid);
+
 
 }

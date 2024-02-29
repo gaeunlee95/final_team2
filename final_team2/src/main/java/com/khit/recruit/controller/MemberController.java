@@ -25,6 +25,7 @@ import com.khit.recruit.dto.CompanyDTO;
 import com.khit.recruit.dto.JobDTO;
 import com.khit.recruit.dto.MemberDTO;
 import com.khit.recruit.entity.Resume;
+import com.khit.recruit.entity.Scrap;
 import com.khit.recruit.service.JobService;
 import com.khit.recruit.service.MemberService;
 
@@ -118,22 +119,44 @@ public class MemberController {
 	    return "redirect:/member/cpmypage";
 	}
 	
-
-	
-	
-	@GetMapping("/announ")
-	public String announ() {
-		return "member/announ";
+	//스크랩 리스트
+	@GetMapping("/scrap")
+	public String scrap(
+			@PageableDefault(page = 1) Pageable pageable,
+			@AuthenticationPrincipal SecurityUser principal,
+			Model model) {
+		Long mid = principal.getMember().getMid();
+		
+		Page<Scrap> scrapList = null;
+		scrapList = memberService.findScrapListByMemberMid(pageable, mid);
+		log.info("ScrapList : " + scrapList );
+		
+		//하단의 페이지 블럭 만들기
+		int blockLimit = 10;  //하단에 보여줄 페이지 개수
+		//시작 페이지 1, 11, 21    12/10 = 1.2 -> 2.2 -> 2-1, 1*10+1 =11
+		int startPage = ((int)(Math.ceil((double)pageable.getPageNumber()/blockLimit))-1)*blockLimit+1;
+		//마지막 페이지 10, 20, 30 //12page -> 12 마지막
+		int endPage = (startPage+blockLimit-1) > scrapList.getTotalPages() ?
+				scrapList.getTotalPages() : startPage+blockLimit-1;
+		endPage = Math.max(endPage, startPage); // 마지막 페이지는 시작 페이지와 같거나 큼
+		
+		model.addAttribute("scrapList", scrapList);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+	return "member/scrap";
 	}
 	
 	//지원 리스트
 	@GetMapping("/resume")
 	public String GetJobAppPageList(
 			@PageableDefault(page = 1) Pageable pageable,
+			@AuthenticationPrincipal SecurityUser principal,
 			Model model) {
+		
+			Long mid = principal.getMember().getMid();
 			
 			Page<Resume> resumeList = null;
-			resumeList = memberService.findListAll(pageable);
+			resumeList = memberService.findListByMember(pageable, mid);
 			log.info("ResumeList : " + resumeList );
 			
 			//하단의 페이지 블럭 만들기
