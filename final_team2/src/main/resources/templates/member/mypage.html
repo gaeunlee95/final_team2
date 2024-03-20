@@ -56,10 +56,10 @@
 					<div id="detailbox">
 						<h3>회원 정보</h3>
 						<ul>
-							<li>회원정보 수정</li>
-							<li>비밀번호 변경</li>
+							<li><a th:href="@{|/member/update/${member.mid}|}">회원정보 수정</a></li>
+							<li><a th:href="@{|/member/pwUpdate/${member.mid}|}">비밀번호 변경</a></li>
 							<li>1대1 상담</li>
-							<li>회원 탈퇴</li>
+							<li><a th:href="@{|/member/withdrawal/${member.mid}|}">회원 탈퇴</a></li>
 						</ul>
 					</div>	
 				</div>

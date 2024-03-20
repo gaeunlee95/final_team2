@@ -108,13 +108,7 @@
 							      job.salary}"></span>
 						</p>
 					</div>	
-					<!-- <div> -->
-						<!-- 스크랩한 상태 -->
-						<!-- <img th:src="@{/images/job/star_selected.svg}" alt="star"> -->
-						<!-- 스크랩 안 한 상태 -->
-						<!-- <img th:src="@{/images/job/star.svg}" alt="star"> -->
-						
-						<!-- 초기 페이지 로딩 시, thymeleaf로 스크랩 여부 받아옴 -->
+					<!-- 초기 페이지 로딩 시, thymeleaf로 스크랩 여부 받아옴 -->
 					<div sec:authorize="hasAuthority('MEMBER')">
 						<img class="scrap-button" 
 						     th:src="${job.isScrapped ? '/images/job/star_selected.svg' : '/images/job/star.svg'}" 
@@ -126,9 +120,6 @@
 					    <!-- 로그인하지 않았거나 ROLE_MEMBER가 아닌 사용자에게 보여지는 이미지 (클릭 비활성화) -->
 					    <img th:src="@{/images/job/star.svg}" alt="star">
 					</div>
-				     
-						
-					<!-- </div>	 -->			
 					<div>
 						<button class="small_btn">즉시 지원</button>
 						<p >2023-11-06 등록</p>
@@ -213,10 +204,12 @@
 		                // 성공적으로 처리된 후 UI 변경
 		                if(response.isScrapped) {
 		                    // 스크랩된 상태로 UI 변경
-		                    $('img[data-job-id="' + jid + '"]').attr('src', '/images/job/star_selected.svg').data('scrapped', true);
+		                    $('img[data-job-id="' + jid + '"]')
+		                    .attr('src', '/images/job/star_selected.svg').data('scrapped', true);
 		                } else {
 		                    // 스크랩 취소된 상태로 UI 변경
-		                    $('img[data-job-id="' + jid + '"]').attr('src', '/images/job/star.svg').data('scrapped', false);
+		                    $('img[data-job-id="' + jid + '"]')
+		                    .attr('src', '/images/job/star.svg').data('scrapped', false);
 		                }
 		            },
 		            error: function(error) {

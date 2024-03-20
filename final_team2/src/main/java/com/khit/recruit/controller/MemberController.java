@@ -174,7 +174,7 @@ public class MemberController {
 		return "member/resume";
 	}
 	
-	//* 회원정보 수정페이지 */
+	// 회원정보 수정페이지
 	@GetMapping("/update/{mid}")
 	public String updateForm(@PathVariable Long mid, Model model,
 							 @AuthenticationPrincipal SecurityUser principal) {
@@ -183,15 +183,29 @@ public class MemberController {
 		return "member/detail";
 	}
 	
-	// 회원 수정
-	@PostMapping("/update/{mid}")
-	public String update(MemberDTO memberDTO,
-			 @AuthenticationPrincipal SecurityUser principal) {
-		//MemberDTO memberDTO = memberService.findById(principal.getMember().getMid());
-		memberService.update(memberDTO);
-		
-		return "redirect:/" + memberDTO.getMid();
-	}
+    // 회원정보 수정
+    @PostMapping("/update/{mid}")
+    public String update2(@ModelAttribute MemberDTO memberDTO, @PathVariable Long mid){
+        memberService.update2(mid, memberDTO.getEmail(), memberDTO.getPhone(), 
+        		memberDTO.getGender(), memberDTO.getBirth());
+        return "redirect:/member/mypage";
+    }
+    
+    // 비밀번호 변경폼
+    @GetMapping("/pwUpdate/{mid}")
+    public String pwUpdate(@PathVariable Long mid, Model model,
+                           @AuthenticationPrincipal SecurityUser principal){
+        MemberDTO memberDTO = memberService.findById(mid);
+        model.addAttribute("member", memberDTO);
+        return "member/pwUpdate";
+    }
+    
+    // 비밀번호 변경매서드
+    @PostMapping("/pwUpdate/{mid}")
+    public String changePw(@ModelAttribute MemberDTO memberDTO, @PathVariable Long mid){
+        memberService.pwUpdate(mid, memberDTO.getMpasswd());
+        return "redirect:/";
+    }
 	
 	//아이디 중복 검사
 	//일반,기업회원 같이 검사

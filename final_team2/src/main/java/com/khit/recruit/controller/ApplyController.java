@@ -87,7 +87,6 @@ public class ApplyController {
 		Long cid = principal.getCompany().getCid();
 		
 		Page<ApplyDTO> applyDTOList = null;
-		//검색어가 없으면 페이지 처리를 하고, 검색어가 있으면 검색어로 페이지 처리
 		applyDTOList = applyService.findListByCid(pageable, cid);
 		log.info("applyDTOList : " + applyDTOList );
 		

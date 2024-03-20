@@ -29,6 +29,7 @@ import com.khit.recruit.repository.MemberRepository;
 import com.khit.recruit.repository.ResumeRepository;
 import com.khit.recruit.repository.ScrapRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -155,20 +156,18 @@ public class MemberService {
 	    return companyDTO;
 	}
 
-	public void update(MemberDTO memberDTO) {
-		//암호화, 권한 설정
-		/*
-		 * String encPW = pwEncoder.encode(memberDTO.getMpasswd());
-		 * memberDTO.setMpasswd(encPW);
-		 */
-		memberDTO.setRole(Role.MEMBER);
-		
-		//변환시 엔티티 메서드를 toSaveUpdate()로 바꿔줌
-		memberDTO.setMpasswd(memberRepository.findByMemberId(memberDTO.getMemberId()).get().getMpasswd());
-		MemberEntity member = MemberEntity.toSaveUpdate(memberDTO);
-		
-		memberRepository.save(member);
-	}
+	//회원 수정
+    @Transactional
+    public void update2(Long mid, String email, String phone, String gender, Integer birth){
+        memberRepository.update2(email, phone, gender, birth, mid);
+    }
+
+    //비밀번호 변경
+    @Transactional
+    public void pwUpdate(Long mid, String rawPassword) {
+        String encodeedPassword = pwEncoder.encode(rawPassword);
+        memberRepository.pwUpdate(encodeedPassword, mid);
+    }
 
 	public CompanyDTO findByCId(Long cid) {
 		Optional<CompanyEntity> findCompany = companyRepository.findByCid(cid);

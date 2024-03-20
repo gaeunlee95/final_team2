@@ -25,8 +25,6 @@ public interface JobRepository extends JpaRepository<Job, Long>{
 	Optional<Job> findByJid(Long jid);
 
 	Page<Job> findByCompany_Cid(Pageable pageable, Long cid);
-
-	
 	
 	// 도시(지역), 공고 제목, 병원 이름을 기준으로 검색
 	// 값이 NULL일 경우 무시
